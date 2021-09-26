@@ -24,4 +24,17 @@ public class Carta {
 	public char getNum() {
 		return num;
 	}
+        
+        public int compareTo(Carta otra) {
+         if (this.num < otra.getNum())
+            return -1;
+         else if(this.num > otra.getNum())
+             return 1;
+         else{
+            if(this.palo < otra.getPalo())
+                return 1;
+            else
+                return -1;
+        }
+    }
 }
