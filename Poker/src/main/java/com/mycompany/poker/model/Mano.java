@@ -31,7 +31,7 @@ public class Mano {
     }
 
     private void buscaJugadas(){
-
+        //prueba
     }
     public String jugadaToString(){
         return "hola";
