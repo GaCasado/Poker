@@ -10,18 +10,44 @@ package com.mycompany.poker.model;
  */
 public class Carta {
 	private char palo;
-	private char num;
+	private int num;
 	
 	public Carta(char p, char n){
 		this.palo = p;
-		this.num = n;
+		this.num = parseaCarta(n);
 	}
+        private int parseaCarta(char c){
+            int ca = 0;
+            if(c != 'A' && c != 'T' && c != 'J' && c != 'Q' && c != 'K' ){
+                ca = Character.getNumericValue(c);
+            }
+            else{
+                switch(c){
+                    case 'A':
+                        ca = 1;
+                    break;
+                    case 'T':
+                        ca = 10;
+                    break;
+                    case 'J':
+                        ca = 11;
+                    break;
+                    case 'Q':
+                        ca = 12;
+                    break;
+                    case 'K':
+                        ca = 13;
+                    break;
+                }
+            }
+            return ca;
+        }
 	
 	public char getPalo() {
 		return palo;
 	}
 	
-	public char getNum() {
+	public int getNum() {
 		return num;
 	}
         

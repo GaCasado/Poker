@@ -7,6 +7,8 @@ package com.mycompany.poker.model;
 //import com.mycompany.poker.model.Carta;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Map;
+import java.util.HashMap;
 //import java.lang.String;
 import java.util.List;
 import java.util.Comparator;
@@ -34,7 +36,25 @@ public class Mano {
     }
 
     private void buscaJugadas(){
+        Map<Integer,Integer> repeticiones = new HashMap<Integer,Integer>();
         //prueba
+        for(int i = 0; i < nC - 1; i++){
+            if(cartas.get(i+1).getNum() - cartas.get(i).getNum() == 0){               
+                if(repeticiones.putIfAbsent(cartas.get(i).getNum(), 1) != null)
+                    repeticiones.put(cartas.get(i).getNum(), repeticiones.get(cartas.get(i).getNum()));   
+            }
+            else if(cartas.get(i+1).getNum() - cartas.get(i).getNum() == 1){
+                //contar escalera
+            }
+            else{
+                //ver si se queda de proyecto de escalera por la mitad
+            }
+            if(cartas.get(i+1).getPalo() == cartas.get(i).getPalo()){
+                //sumar al contador de ese palo
+            }
+        }
+        
+        //tratar las repeticiones y gurdar las jugadas
     }
     public String jugadaToString(){
         return "hola";
