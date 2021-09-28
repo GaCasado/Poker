@@ -29,12 +29,24 @@ public class Main {
 	
 	private void start(String[] args) throws Exception {
 		parseArgs(args);
+                String cartas = "";
+                int num;
 		switch (ej) {
 		case 1:
-			System.out.println("aqui lo nuevio");
+			for(int i = 0; i < 10; i++){
+                            cartas += (char) inFile.read();
+                        }
 			break;
 		case 2:
-			
+			for(int i = 0; i < 4; i++){
+                            cartas += (char) inFile.read();
+                        }
+                        inFile.skip(1);
+                        num = (int) inFile.read();
+                        inFile.skip(1);
+                        for(int i = 0; i < num; i++){
+                            cartas += (char) inFile.read();
+                        }
 			break;
 		case 3:
 	
