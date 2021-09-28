@@ -24,7 +24,7 @@ public class Carta {
             else{
                 switch(c){
                     case 'A':
-                        ca = 1;
+                        ca = 14;
                     break;
                     case 'T':
                         ca = 10;
