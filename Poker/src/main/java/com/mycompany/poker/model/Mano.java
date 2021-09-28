@@ -38,19 +38,28 @@ public class Mano {
     private void buscaJugadas(){
         Map<Integer,Integer> repeticiones = new HashMap<Integer,Integer>();
         //prueba
+        if(cartas.get(nC - 1).getNum() - cartas.get(0).getNum() == 5){
+            //hay escalera o si solo hay una pareja hay proyecto
+        }
+        else if(cartas.get(nC - 1).getNum() - cartas.get(0).getNum() == 4 ){
+            
+        }
         for(int i = 0; i < nC - 1; i++){
             if(cartas.get(i+1).getNum() - cartas.get(i).getNum() == 0){               
                 if(repeticiones.putIfAbsent(cartas.get(i).getNum(), 1) != null)
                     repeticiones.put(cartas.get(i).getNum(), repeticiones.get(cartas.get(i).getNum()));   
             }
             else if(cartas.get(i+1).getNum() - cartas.get(i).getNum() == 1){
+                if(cartas.get(i).getPalo() == cartas.get(i+1).getPalo()){
+                    //escalera real
+                }
                 //contar escalera
             }
             else{
                 //ver si se queda de proyecto de escalera por la mitad
             }
             if(cartas.get(i+1).getPalo() == cartas.get(i).getPalo()){
-                //sumar al contador de ese palo
+                //sumar al contador de color de ese palo
             }
         }
         
