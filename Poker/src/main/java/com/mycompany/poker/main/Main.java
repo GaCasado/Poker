@@ -31,7 +31,7 @@ public class Main {
 		parseArgs(args);
 		switch (ej) {
 		case 1:
-			
+			System.out.println("aqui lo nuevio");
 			break;
 		case 2:
 			
