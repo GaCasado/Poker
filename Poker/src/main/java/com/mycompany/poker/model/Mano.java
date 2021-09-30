@@ -14,7 +14,8 @@ import java.util.List;
 public class Mano {
     //private final List<String> jugadas;
     //private final int nC;
-    private String solucion = null, drawS = null, drawF = null;
+    private Solucion solucion = null;
+    String drawS = null, drawF = null;
     private String manoOrd = "";
     public Mano(String jugador, String mesa, int nC){//nC de entrada es el número de cartas que hay en la mesa
         //this.nC = nC + 2;
@@ -28,7 +29,7 @@ public class Mano {
     private void solucion(String jugador, String mesa, int nC){
         //Hacer que esta función llame a busca jugadas con todas las combinaciones
         //No se si lo he hecho bien
-        ArrayList<Carta> cartasJ = new ArrayList<>(); String solActual = null;
+        ArrayList<Carta> cartasJ = new ArrayList<>(); Solucion solActual = null;
         for(int i = 0; i < 2; i++){
             cartasJ.add(new Carta(jugador.charAt(i*2), jugador.charAt(i*2 + 1), true));
         }
@@ -46,12 +47,13 @@ public class Mano {
         }
     }
 
-    private String buscaJugadas(ArrayList<Carta> cartas){
+    private Solucion buscaJugadas(ArrayList<Carta> cartas){
+        Solucion solActual = null;
         Map<Carta,Integer> repeticiones = new TreeMap<>();
         List<Carta> lista = new ArrayList<>();
         int colH = 0, colD = 0, colC = 0, colS = 0;
         int pareja1 = -1, pareja2 = -1, trio = -1, poker = -1;
-        String escalera = null, escaleraReal = null, escaleraColor = null, solActual = null;
+        String escalera = null, escaleraReal = null, escaleraColor = null;
        
         for(int i = 0; i < 5; i++){
             Integer aux1 = repeticiones.putIfAbsent(cartas.get(i), 1);
@@ -121,7 +123,7 @@ public class Mano {
                 // si la primera y la ultima no tienen repes en el map es que hay hueco en medio
                 // si una de esas tiene es proyecto del normal
                 //hay proyecto
-                if(repeticiones.get(lista.get(0)) == 1 && repeticiones.get(lista.get(0)) == 1){
+                if(repeticiones.get(lista.get(0)) == 1 && repeticiones.get(lista.get(4)) == 1){
                     drawS = "gutshot " + manoOrd;
                 }
                 else{
@@ -142,52 +144,59 @@ public class Mano {
         10. Carta alta
         */
         if(escaleraReal != null){
-            solActual = escaleraReal;
+            solActual = new Solucion(1,escaleraReal);
         }
         else if(escaleraColor != null){
-            solActual = escaleraColor;
+            solActual = new Solucion(2,escaleraColor);
         }
         else if(poker != -1){//poker
-            solActual = "Four of a kind of " + parseaNumero(poker) + " " + manoOrd;
+            solActual = new Solucion(3, poker, manoOrd);
             
         }
-        else if(pareja1 != -1 && trio != -1){            
+        else if(pareja1 != -1 && trio != -1){        
             //fullhouse 
-            solActual = "Fullhouse with " + parseaNumero(trio) + " and " + parseaNumero(pareja1) + manoOrd;
+            solActual = new Solucion(4, pareja1, trio,manoOrd);
         }
         else if(colH == 5){
             //Color de hearts
+            solActual = new Solucion(5, 1, manoOrd);
         }
         else if(colD == 5){
             //Color de diamonds
+            solActual = new Solucion(5, 2, manoOrd);
         }
         else if(colC == 5){
             //Color de tréboles
+            solActual = new Solucion(5, 3, manoOrd);
         }
         else if(colS == 5){
             //Color de picas
+            solActual = new Solucion(5, 4, manoOrd);
         }
         else if(escalera != null){
             //escalera
-            solActual = escalera;
+            solActual = new Solucion(6, escalera);
         }
         else if(trio != -1){
             //Trio
+            solActual = new Solucion(7, trio, manoOrd);
         }
         else if(pareja1 != -1 && pareja2 != -1){
             //Dobles parejas
+            solActual = new Solucion(8, pareja1, pareja2,manoOrd);
         }
         else if(pareja1 != -1){
             //Pareja
+            solActual = new Solucion(9, pareja1, manoOrd);
         }
         else{
             //Carta alta
-            solActual = null;
+            solActual = new Solucion(10, lista.get(4).getNum(), manoOrd);
         }
         //Poner proyectos de color aquí
         return solActual;
     }
-    
+    /*
     private String parseaNumero(int entrada){
         String salida;Integer aux = entrada;
         switch(entrada){
@@ -211,11 +220,11 @@ public class Mano {
             break;
         }
         return salida;
-    }
-    
+    }*/
+    /*
     public String getJugada(){
         return solucion;
-    }
+    }*/
     
     public List getProyectos(){
         ArrayList<String> proye = new ArrayList<>();
