@@ -15,7 +15,7 @@ public class Mano {
     //private final List<String> jugadas;
     //private final int nC;
     private Solucion solucion = null;
-    String drawS = null, drawF = null;
+    
     private String manoOrd = "";
     public Mano(String jugador, String mesa, int nC){//nC de entrada es el número de cartas que hay en la mesa
         //this.nC = nC + 2;
@@ -30,6 +30,7 @@ public class Mano {
         //Hacer que esta función llame a busca jugadas con todas las combinaciones
         //No se si lo he hecho bien
         ArrayList<Carta> cartasJ = new ArrayList<>(); Solucion solActual = null;
+        ComparadorSoluciones comp = new ComparadorSoluciones();
         for(int i = 0; i < 2; i++){
             cartasJ.add(new Carta(jugador.charAt(i*2), jugador.charAt(i*2 + 1), true));
         }
@@ -43,6 +44,7 @@ public class Mano {
                 } 
             }
             solActual = buscaJugadas(cartas);
+            solucion = comp.compara(solActual, solucion);
             //comparador de soluciones
         }
     }
@@ -53,7 +55,7 @@ public class Mano {
         List<Carta> lista = new ArrayList<>();
         int colH = 0, colD = 0, colC = 0, colS = 0;
         int pareja1 = -1, pareja2 = -1, trio = -1, poker = -1;
-        String escalera = null, escaleraReal = null, escaleraColor = null;
+        String escalera = null, escaleraReal = null, escaleraColor = null, drawSg = null,drawSo = null, drawF = null;;
        
         for(int i = 0; i < 5; i++){
             Integer aux1 = repeticiones.putIfAbsent(cartas.get(i), 1);
@@ -124,11 +126,11 @@ public class Mano {
                 // si una de esas tiene es proyecto del normal
                 //hay proyecto
                 if(repeticiones.get(lista.get(0)) == 1 && repeticiones.get(lista.get(4)) == 1){
-                    drawS = "gutshot " + manoOrd;
+                    drawSg = "gutshot " + manoOrd;
                 }
                 else{
                     //open-ended
-                    drawS = "open-ended " + manoOrd;
+                    drawSo = "open-ended " + manoOrd;
                 }
         }
         /*
@@ -194,6 +196,12 @@ public class Mano {
             solActual = new Solucion(10, lista.get(4).getNum(), manoOrd);
         }
         //Poner proyectos de color aquí
+        if(drawSg != null)
+            solActual.setDrawSg(drawSg);
+        else if(drawSo != null)
+            solActual.setDrawSo(drawSo);
+        if(colH == 4 || colD  == 4 || colC == 4 || colS == 4)
+            solActual.setDrawF(manoOrd);
         return solActual;
     }
     /*
@@ -225,7 +233,7 @@ public class Mano {
     public String getJugada(){
         return solucion;
     }*/
-    
+    /*
     public List getProyectos(){
         ArrayList<String> proye = new ArrayList<>();
         if(drawS != null)
@@ -235,5 +243,5 @@ public class Mano {
         else
             return null;
         return proye;
-    }
+    }*/
 }
