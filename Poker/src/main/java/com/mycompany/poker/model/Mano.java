@@ -45,7 +45,6 @@ public class Mano {
             }
             solActual = buscaJugadas(cartas);
             solucion = comp.compara(solActual, solucion);
-            //comparador de soluciones
         }
     }
 

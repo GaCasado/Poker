@@ -4,10 +4,7 @@
  */
 package com.mycompany.poker.model;
 
-/**
- *
- * @author seiya
- */
+
 public class Solucion {
     private int jugada;
     private int tipo;
