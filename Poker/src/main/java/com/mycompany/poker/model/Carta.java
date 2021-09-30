@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.poker.model;
-
+import java.lang.String;
 /**
  *
  * @author seiya
@@ -11,10 +11,12 @@ package com.mycompany.poker.model;
 public class Carta {
 	private char palo;
 	private int num;
+        private boolean jugador;
 	
-	public Carta(char p, char n){
+	public Carta(char p, char n, boolean jugador){
 		this.palo = p;
 		this.num = parseaCarta(n);
+                this.jugador = jugador;
 	}
         private int parseaCarta(char c){
             int ca = 0;
@@ -61,6 +63,17 @@ public class Carta {
                 return 1;
             else
                 return -1;
+            }
+        
+        
         }
-    }
+        
+        @Override
+        public String toString(){
+            Integer n = num;
+            if(jugador)
+                return "\033[0;1m" + n.toString() + palo;
+            else
+                return n.toString() + palo;
+        }
 }
