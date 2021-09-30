@@ -44,7 +44,7 @@ public class Mano {
                // escaleraC = 0, escaleraH = 0, escaleraD = 0, escaleraS = 0;
         boolean hueco = false;//, color = false;
         //char po = 'z';
-        int pareja = -1, trio = -1, poker = -1, cont=0;
+        int pareja1 = -1, pareja2 = -1, trio = -1, poker = -1;
         //String fullhouse = "-1";
        
         for(int i = 0; i < nC - 1; i++){
@@ -82,8 +82,12 @@ public class Mano {
             lista.add(auxC);
             
             if(auxR == 2){
-                if(auxC.getNum() > pareja)
-                    pareja = auxC.getNum();
+                if(auxC.getNum() > pareja1){
+                    pareja2 = pareja1;
+                    pareja1 = auxC.getNum();
+                }
+                    
+                    
             }
             if(auxR == 3){
                 if(auxC.getNum() > trio)
@@ -93,19 +97,47 @@ public class Mano {
                 if(auxC.getNum() > poker)
                     poker = auxC.getNum();
             }
-            cont++;
         }
-        
+        /*
+        1. Escalera real de color (cartas 10, J, Q, K y A del mismo palo)
+        2. Escalera de color
+        3. Poker
+        4. Full house
+        5. Color
+        6. Escalera
+        7. Trio
+        8. Dobles parejas
+        9. Parejas
+        10. Carta alta
+        */
+        for(int i = 4; i < lista.size() ; i++){
+            if(lista.get(i).getNum() - lista.get(i - 4).getNum() == 5){
+                //hay escalera
+            }
+            else if(lista.get(i).getNum() - lista.get(i - 4).getNum() == 4){
+                // si la primera y la ultima no tienen repes en el map es que hay hueco en medio
+                // si una de esas tiene es proyecto del normal
+                //hay proyecto
+            }
+        }
+        if(poker != -1){
+            //poker
+        }
+        else if(pareja1 != -1 && trio != -1){            
+            //fullhouse           
+        }
+        else if(colH == 5){
+            //Color de hearts
+        }
         for(Carta c : lista){
             
         }
         
         
-        if(pareja != -1 && trio != -1){
-            //fullhouse
-        }
+        
         //tratar las repeticiones si no hay escalera de color y gurdar la mejor jugada y los proectos de colr
     }
+    
     public String jugadaToString(){
         return "hola";
     }
