@@ -9,6 +9,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import com.mycompany.poker.model.Mano;
 
 public class Main {
 
@@ -16,10 +18,12 @@ public class Main {
 	private int numCartas;
 	private static OutputStream outFile = null;
 	private static InputStream inFile = null;
+        private ArrayList<Mano> manos;
 	
 	public Main(String[] args) {
 		try {			
-			start(args);
+			parseArgs(args);
+                        run();
 		} catch (Exception e) {
 			System.err.println("Something went wrong ...");
 			System.err.println();
@@ -27,38 +31,55 @@ public class Main {
 		}
 	}
 	
-	private void start(String[] args) throws Exception {
-		parseArgs(args);
+	private void run() throws Exception {
+		
                 String cartas = "";
                 int num;
 		switch (ej) {
 		case 1:
-			for(int i = 0; i < 10; i++){
-                            cartas += (char) inFile.read();
+                        while(inFile.available() != 0){
+                            for(int i = 0; i < 10; i++){
+                                cartas += (char) inFile.read();
+                            }
+                            Mano mano = new Mano(cartas,5);
                         }
+                        
+                        cartas = "";
 			break;
 		case 2:
-			for(int i = 0; i < 4; i++){
-                            cartas += (char) inFile.read();
+                        while(inFile.available() != 0){
+                            for(int i = 0; i < 4; i++){
+                              cartas += (char) inFile.read();
+                            }
+                            inFile.skip(1); // Salta el punto y coma
+                            num = (int) inFile.read(); // Lee el numero de cartas del river
+                            inFile.skip(1); // Salta el punto y coma
+                            for(int i = 0; i < num*2; i++){
+                                cartas += (char) inFile.read();
+                            }
+                            Mano mano = new Mano(cartas,2+num);
                         }
-                        inFile.skip(1);
-                        num = (int) inFile.read();
-                        inFile.skip(1);
-                        for(int i = 0; i < num; i++){
-                            cartas += (char) inFile.read();
-                        }
+                        cartas = "";
 			break;
 		case 3:
-	
+                    	while(inFile.available() != 0){
+                            
+                        }
+                        cartas = "";
 			break;
 		case 4:
-	
+                        while(inFile.available() != 0){
+                            
+                        }
+                        cartas = "";
 			break;
 
 		default:
 			System.err.println("Something went wrong ...");
 			throw new Exception();
 		}
+                
+                
 	}
 	
 	private void parseArgs(String[] args) throws FileNotFoundException {
