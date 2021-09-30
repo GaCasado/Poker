@@ -19,34 +19,39 @@ public class Mano {
     public Mano(String jugador, String mesa, int nC){//nC de entrada es el número de cartas que hay en la mesa
         //this.nC = nC + 2;
         
-        parseador(jugador , mesa , nC);
+        solucion(jugador , mesa , nC);
         
         //jugadas = new ArrayList<String>();
         
 
     }
-    private void parseador(String jugador, String mesa, int nC){
-        ArrayList<Carta> cartas = new ArrayList<>();
-        for(int i = 0; i < 2; i++){
-            cartas.add(new Carta(jugador.charAt(i*2), jugador.charAt(i*2 + 1), true));
-        }
-        for(int i = 0; i < nC; i++){
-            for(int j = 0; j < nC; j++){
-                
-            }
-            buscaJugadas(cartas);
-        }
-        
-        
+    private void solucion(String jugador, String mesa, int nC){
         //Hacer que esta función llame a busca jugadas con todas las combinaciones
+        //No se si lo he hecho bien
+        ArrayList<Carta> cartasJ = new ArrayList<>(); String solActual = null;
+        for(int i = 0; i < 2; i++){
+            cartasJ.add(new Carta(jugador.charAt(i*2), jugador.charAt(i*2 + 1), true));
+        }
+        
+        for(int i = 0; i < nC; i++){
+            ArrayList<Carta> cartas = new ArrayList<>();
+            cartas = cartasJ;
+            for(int j = 0; j < nC; j++){
+                if(i != j){
+                    cartas.add(new Carta(mesa.charAt(i*2), mesa.charAt(i*2 + 1), false));
+                } 
+            }
+            solActual = buscaJugadas(cartas);
+            //comparador de soluciones
+        }
     }
 
-    private void buscaJugadas(ArrayList<Carta> cartas){
+    private String buscaJugadas(ArrayList<Carta> cartas){
         Map<Carta,Integer> repeticiones = new TreeMap<>();
         List<Carta> lista = new ArrayList<>();
         int colH = 0, colD = 0, colC = 0, colS = 0;
         int pareja1 = -1, pareja2 = -1, trio = -1, poker = -1;
-        String escalera = null, escaleraReal = null, escaleraColor = null;
+        String escalera = null, escaleraReal = null, escaleraColor = null, solActual = null;
        
         for(int i = 0; i < 5; i++){
             Integer aux1 = repeticiones.putIfAbsent(cartas.get(i), 1);
@@ -137,18 +142,18 @@ public class Mano {
         10. Carta alta
         */
         if(escaleraReal != null){
-            solucion = escaleraReal;
+            solActual = escaleraReal;
         }
         else if(escaleraColor != null){
-            solucion = escaleraColor;
+            solActual = escaleraColor;
         }
         else if(poker != -1){//poker
-            solucion = "Four of a kind of " + parseaNumero(poker) + " " + manoOrd;
+            solActual = "Four of a kind of " + parseaNumero(poker) + " " + manoOrd;
             
         }
         else if(pareja1 != -1 && trio != -1){            
             //fullhouse 
-            solucion = "Fullhouse with " + parseaNumero(trio) + " and " + parseaNumero(pareja1) + manoOrd;
+            solActual = "Fullhouse with " + parseaNumero(trio) + " and " + parseaNumero(pareja1) + manoOrd;
         }
         else if(colH == 5){
             //Color de hearts
@@ -164,7 +169,7 @@ public class Mano {
         }
         else if(escalera != null){
             //escalera
-            solucion = escalera;
+            solActual = escalera;
         }
         else if(trio != -1){
             //Trio
@@ -177,9 +182,10 @@ public class Mano {
         }
         else{
             //Carta alta
+            solActual = null;
         }
         //Poner proyectos de color aquí
-        
+        return solActual;
     }
     
     private String parseaNumero(int entrada){
@@ -207,59 +213,18 @@ public class Mano {
         return salida;
     }
     
-    public String jugadaToString(){
+    public String getJugada(){
         return solucion;
     }
     
     public List getProyectos(){
-        return new ArrayList<String>();
+        ArrayList<String> proye = new ArrayList<>();
+        if(drawS != null)
+            proye.add(drawS);
+        else if(drawF != null)
+            proye.add(drawF);
+        else
+            return null;
+        return proye;
     }
 }
-
-
-
-
-
-
-/*
-
- 
-            else if(cartas.get(i+1).getNum() - cartas.get(i).getNum() == 1){
-                if(i > 4){
-                    
-                }
-                else{
-                    if(cartas.get(i).getPalo() == cartas.get(i+1).getPalo()){
-                    if(po == 'z'){
-                        po = cartas.get(i).getPalo();
-                    }
-                    else{
-                        if(po != cartas.get(i).getPalo())
-                            ;
-                    }
-                
-                }
-                escalera++;
-                //contar escalera
-                }   
-                
-            }
-            
-            else{
-                if(cartas.get(i+1).getNum() - cartas.get(i).getNum() == 2 && !hueco){
-                    hueco = true;
-                    if(cartas.get(i).getPalo() == cartas.get(i+1).getPalo()){
-                        //escalera real
-                        //escaleraReal++;
-                    }
-                    escalera++;
-                }
-                else {
-                    escalera = 0;
-                    //escaleraReal = 0;
-                    hueco = false;
-                }
-                //ver si se queda de proyecto de escalera por la mitad
-            }
-            
-*/
