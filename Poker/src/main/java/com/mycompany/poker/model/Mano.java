@@ -35,12 +35,12 @@ public class Mano {
             cartasJ.add(new Carta(jugador.charAt(i*2), jugador.charAt(i*2 + 1), true));
         }
         
-        for(int i = 0; i < nC; i++){
+        for(int i = 0; i < nC - 2; i++){
             ArrayList<Carta> cartas = new ArrayList<>();
             cartas = cartasJ;
-            for(int j = 0; j < nC; j++){
+            for(int j = 0; j < nC; j++){// esto esta mal hay que cambiarlo
                 if(i != j){
-                    cartas.add(new Carta(mesa.charAt(i*2), mesa.charAt(i*2 + 1), false));
+                    cartas.add(new Carta(mesa.charAt(j*2), mesa.charAt(j*2 + 1), false));
                 } 
             }
             solActual = buscaJugadas(cartas);
@@ -101,8 +101,8 @@ public class Mano {
                     poker = auxC.getNum();
             }
         }
-        
-        if(lista.get(0).getNum() - lista.get(4).getNum() == 5){//hay escalera
+        if(lista.size() == 5){
+            if(lista.get(0).getNum() - lista.get(4).getNum() == 5){//hay escalera
                 
                 if(lista.get(4).getPalo() == lista.get(3).getPalo()// Escalera de color o Real
                         && lista.get(4).getPalo() == lista.get(2).getPalo()
@@ -119,19 +119,24 @@ public class Mano {
             else{//escalera normal
                     escalera = "Straight " + manoOrd;
             }
-         }
-        else if(lista.get(0).getNum() - lista.get(4).getNum() == 4){
+         }//SIN TERMINAR
+        else if(lista.get(0).getNum() - lista.get(4).getNum() == 4){//esto lo tengo que terminar
                 // si la primera y la ultima no tienen repes en el map es que hay hueco en medio
                 // si una de esas tiene es proyecto del normal
                 //hay proyecto
-                if(repeticiones.get(lista.get(0)) == 1 && repeticiones.get(lista.get(4)) == 1){
-                    drawSg = "gutshot " + manoOrd;
-                }
-                else{
+                //if(repeticiones.get(lista.get(0)) == 1 && repeticiones.get(lista.get(4)) == 1){
+                //    drawSg = "gutshot " + manoOrd;
+                //}
+                //else{
                     //open-ended
                     drawSo = "open-ended " + manoOrd;
-                }
+                //}
         }
+        }
+        else if (lista.size() == 4){
+            
+        }
+        
         /*
         1. Escalera real de color (cartas 10, J, Q, K y A del mismo palo)
         2. Escalera de color

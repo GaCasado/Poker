@@ -28,53 +28,82 @@ public class ComparadorSoluciones {
             switch(sol1.getJugada()){
                 case 1:
                 {
-                    return sol1;
+                    if(compara1(sol1, sol2))
+                        return sol1;
+                    else
+                        return sol2;                   
                 }
                 
                 case 2:
                 {
-                    //Mirar que escalera es más alta
-                    return sol1;
+                    if(compara2(sol1, sol2))
+                        return sol1;
+                    else
+                        return sol2;
                 }
 
                 case 3:
                 {
-                    return sol1;
+                    if(compara3(sol1, sol2))
+                        return sol1;
+                    else
+                        return sol2;
                 }
 
                 case 4:
                 {
-                    return sol1;
+                    if(compara4(sol1, sol2))
+                        return sol1;
+                    else
+                        return sol2;
                 }
 
                 case 5:
                 {
-                    return sol1;
+                    if(compara5(sol1, sol2))
+                        return sol1;
+                    else
+                        return sol2;
                 }
 
                 case 6:
                 {
-                    return sol1;
+                    if(compara6(sol1, sol2))
+                        return sol1;
+                    else
+                        return sol2;
                 }
 
                 case 7:
                 {
-                    return sol1;
+                    if(compara7(sol1, sol2))
+                        return sol1;
+                    else
+                        return sol2;
                 }
 
                 case 8:
                 {
-                    return sol1;
+                    if(compara8(sol1, sol2))
+                        return sol1;
+                    else
+                        return sol2;
                 }
 
                 case 9:
                 {
-                    return sol1;
+                    if(compara9(sol1, sol2))
+                        return sol1;
+                    else
+                        return sol2;
                 }
 
                 case 10:
                 {
-                    return sol1;
+                    if(compara10(sol1, sol2))
+                        return sol1;
+                    else
+                        return sol2;
                 }
 
             }
@@ -82,5 +111,36 @@ public class ComparadorSoluciones {
         }
         else
             return sol2;
+    }
+    
+    private boolean compara1(Solucion sol1, Solucion sol2){
+        return true;
+    }
+    private boolean compara2(Solucion sol1, Solucion sol2){
+        return true;
+    }
+    private boolean compara3(Solucion sol1, Solucion sol2){
+        return true;
+    }
+    private boolean compara4(Solucion sol1, Solucion sol2){
+        return true;
+    }
+    private boolean compara5(Solucion sol1, Solucion sol2){
+        return true;
+    }
+    private boolean compara6(Solucion sol1, Solucion sol2){
+        return true;
+    }
+    private boolean compara7(Solucion sol1, Solucion sol2){
+        return true;
+    }
+    private boolean compara8(Solucion sol1, Solucion sol2){
+        return true;
+    }
+    private boolean compara9(Solucion sol1, Solucion sol2){
+        return true;
+    }
+    private boolean compara10(Solucion sol1, Solucion sol2){
+        return true;
     }
 }
