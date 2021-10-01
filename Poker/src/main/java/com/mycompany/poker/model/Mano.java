@@ -205,12 +205,12 @@ public class Mano {
             //Carta alta
             solActual = new Solucion(10, lista.get(4).getNum(), manoOrd);
         }
-        //Poner proyectos de color aquí
+        //Proyectos
         if(drawSg != null)
             solActual.setDrawSg(drawSg);
         else if(drawSo != null)
             solActual.setDrawSo(drawSo);
-        if(colH == 4 || colD  == 4 || colC == 4 || colS == 4)
+        if(colH == 4 || colD  == 4 || colC == 4 || colS == 4)//si hay que decir que color es se cambia
             solActual.setDrawF(manoOrd);
         return solActual;
     }
