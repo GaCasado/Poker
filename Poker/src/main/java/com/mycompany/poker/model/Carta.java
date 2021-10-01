@@ -70,10 +70,44 @@ public class Carta {
         
         @Override
         public String toString(){
-            Integer n = num;
+            Integer n;Character aux = 'o';String aux1;
+            switch(num){
+                    case 14:{
+                        aux = 'A';
+                        aux1 = aux.toString();
+                    }
+                        
+                    break;
+                    case 10:{
+                        aux = 'T';
+                        aux1 = aux.toString();
+                    }
+                    break;
+                    case 11:{
+                        aux = 'J';
+                        aux1 = aux.toString();
+                    }
+                    break;
+                    case 12:{
+                        aux = 'Q';
+                        aux1 = aux.toString();
+                    }
+                    break;
+                    case 13:{
+                        aux = 'K';
+                        aux1 = aux.toString();
+                    }
+                    break;
+                    default:{
+                        n = num;
+                        aux1 = n.toString();
+                    }
+                        
+                }
+            
             if(jugador)
-                return "\033[0;1m" + n.toString() + palo;
+                return "\033[0;1m" + aux1 + palo;
             else
-                return n.toString() + palo;
+                return aux.toString() + palo;
         }
 }

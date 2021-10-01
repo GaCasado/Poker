@@ -101,6 +101,8 @@ public class Mano {
                     poker = auxC.getNum();
             }
         }
+        
+        
         if(lista.size() == 5){
             if(lista.get(0).getNum() - lista.get(4).getNum() == 5){//hay escalera
                 
@@ -116,25 +118,29 @@ public class Mano {
                         escaleraColor = "Straight Flush " + manoOrd;
                     }
                 }
-            else{//escalera normal
+                else{//escalera normal
                     escalera = "Straight " + manoOrd;
+                }
             }
-         }//SIN TERMINAR
-        else if(lista.get(0).getNum() - lista.get(4).getNum() == 4){//esto lo tengo que terminar
-                // si la primera y la ultima no tienen repes en el map es que hay hueco en medio
-                // si una de esas tiene es proyecto del normal
-                //hay proyecto
-                //if(repeticiones.get(lista.get(0)) == 1 && repeticiones.get(lista.get(4)) == 1){
-                //    drawSg = "gutshot " + manoOrd;
-                //}
-                //else{
-                    //open-ended
-                    drawSo = "open-ended " + manoOrd;
-                //}
-        }
+            
+            else if(lista.get(0).getNum() - lista.get(4).getNum() == 6){
+                drawSg = "gutshot " + manoOrd;
+            } 
+            else if(lista.get(0).getNum() - lista.get(3).getNum() == 4 || lista.get(1).getNum() - lista.get(4).getNum() == 4){//esto lo tengo que terminar               
+                drawSo = "open-ended " + manoOrd;               
+            }
         }
         else if (lista.size() == 4){
-            
+            // si la primera y la ultima no tienen repes en el map es que hay hueco en medio
+            // si una de esas tiene es proyecto del normal
+            //hay proyecto
+            if(repeticiones.get(lista.get(0)) == 1 && repeticiones.get(lista.get(3)) == 1){
+                    drawSg = "gutshot " + manoOrd;
+            }
+            else{
+                //open-ended
+                drawSo = "open-ended " + manoOrd;
+            }
         }
         
         /*
