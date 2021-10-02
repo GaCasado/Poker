@@ -50,14 +50,17 @@ public class Mano {
 
     private Solucion buscaJugadas(ArrayList<Carta> cartas){
         Solucion solActual = null;
-        Map<Carta,Integer> repeticiones = new TreeMap<>();
+        Map<Integer,ArrayList<Carta>> repeticiones = new TreeMap<>();//estoy cambiando el mapa
         List<Carta> lista = new ArrayList<>();
         int colH = 0, colD = 0, colC = 0, colS = 0;
         int pareja1 = -1, pareja2 = -1, trio = -1, poker = -1;
-        String escalera = null, escaleraReal = null, escaleraColor = null, drawSg = null,drawSo = null, drawF = null;;
+        String escalera = null, escaleraReal = null, escaleraColor = null, drawSg = null,drawSo = null, drawF = null;
+        
+       ArrayList<Carta> aux1 = new ArrayList<>();
        
         for(int i = 0; i < 5; i++){
-            Integer aux1 = repeticiones.putIfAbsent(cartas.get(i), 1);
+            
+            aux1 = repeticiones.putIfAbsent(cartas.get(i).getNum(), new ArrayList<>(cartas.get(i)));
             if(aux1 != null)
                 repeticiones.put(cartas.get(i), aux1++);
            
@@ -79,11 +82,12 @@ public class Mano {
             }                        
         }
         
-        for( Map.Entry<Carta, Integer>  r: repeticiones.entrySet()){
-            Carta auxC = r.getKey();
+        for( Map.Entry<Carta, Integer>  r: repeticiones.entrySet()){//esto esta mal
+            Carta auxC = r.getKey();//hacer que la clave sea el número y el valor una lista de cartas
             int auxR = r.getValue();
             
             lista.add(auxC);
+            
             manoOrd += auxC.toString();
             
             if(auxR == 2){

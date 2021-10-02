@@ -47,6 +47,10 @@ public class Solucion {
         return tipo;
     }
 
+    public int getTipo2() {
+        return tipo2;
+    }
+    
     public String getMano() {
         return mano;
     }

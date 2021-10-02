@@ -9,18 +9,7 @@ public class ComparadorSoluciones {
 
     public ComparadorSoluciones() {
     }
-    /*
-        1. Escalera real de color (cartas 10, J, Q, K y A del mismo palo)
-        2. Escalera de color
-        3. Poker
-        4. Full house
-        5. Color
-        6. Escalera
-        7. Trio
-        8. Dobles parejas
-        9. Parejas
-        10. Carta alta
-        */
+    
     public Solucion compara(Solucion sol1, Solucion sol2){
         if(sol1.getJugada() > sol2.getJugada())
             return sol1;
@@ -112,33 +101,89 @@ public class ComparadorSoluciones {
         else
             return sol2;
     }
-    
+    /*
+        1. Escalera real de color (cartas 10, J, Q, K y A del mismo palo)
+        2. Escalera de color
+        3. Poker
+        4. Full house
+        5. Color
+        6. Escalera
+        7. Trio
+        8. Dobles parejas
+        9. Parejas
+        10. Carta alta
+        */
     private boolean compara1(Solucion sol1, Solucion sol2){
         return true;
     }
     private boolean compara2(Solucion sol1, Solucion sol2){
-        return true;
+        if(sol1.getMano().charAt(0) >= sol2.getMano().charAt(0))
+            return true;
+        else
+            return false;
     }
     private boolean compara3(Solucion sol1, Solucion sol2){
-        return true;
+        if(sol1.getTipo() >= sol2.getTipo())
+            return true;
+        else if(sol1.getTipo() == sol2.getTipo()){
+            //comparar la carta alta
+            return true;
+        }
+        else
+            return false;
     }
     private boolean compara4(Solucion sol1, Solucion sol2){
-        return true;
+        if(sol1.getTipo2() > sol2.getTipo2())
+            return true;
+        else if(sol1.getTipo2() == sol2.getTipo2()){
+            return sol1.getTipo() > sol2.getTipo();
+            /*
+            if(sol1.getTipo() > sol2.getTipo())
+                return true;
+            else
+                return false;*/
+        }
+        else
+            return false;
     }
     private boolean compara5(Solucion sol1, Solucion sol2){
-        return true;
+        return sol1.getMano().charAt(0) >= sol2.getMano().charAt(0);
+        /*
+        if(sol1.getMano().charAt(0) >= sol2.getMano().charAt(0))
+            return true;
+        else
+            return false;*/
     }
     private boolean compara6(Solucion sol1, Solucion sol2){
-        return true;
+        return sol1.getMano().charAt(0) >= sol2.getMano().charAt(0);
+        /*
+        if(sol1.getMano().charAt(0) >= sol2.getMano().charAt(0))
+            return true;
+        else
+            return false;*/
     }
     private boolean compara7(Solucion sol1, Solucion sol2){
-        return true;
+        if(sol1.getTipo() >= sol2.getTipo())
+            return true;
+        else if(sol1.getTipo() == sol2.getTipo()){
+            //comparar la carta alta
+            return true;
+        }
+        else
+            return false;
     }
     private boolean compara8(Solucion sol1, Solucion sol2){
         return true;
     }
     private boolean compara9(Solucion sol1, Solucion sol2){
-        return true;
+        if(sol1.getTipo() >= sol2.getTipo())
+            return true;
+        else if(sol1.getTipo() == sol2.getTipo()){
+            //comparar la carta alta
+            return true;
+        }
+        else
+            return false;
     }
     private boolean compara10(Solucion sol1, Solucion sol2){
         return true;
