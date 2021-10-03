@@ -14,24 +14,19 @@ import com.mycompany.poker.model.Mano;
 
 public class Main {
 
-	private int ej;
+	private static int ej;
 	private int numCartas;
 	private static OutputStream outFile = null;
 	private static InputStream inFile = null;
         private ArrayList<Mano> manos;
 	
-	public static void main(String args[]) {
-		try {			
-			parseArgs(args);
-                        run();
-		} catch (Exception e) {
-			System.err.println("Something went wrong ...");
-			System.err.println();
-			e.printStackTrace();
-		}
+        private static void parseArgs(String[] args) throws FileNotFoundException {
+		ej = Integer.parseInt(args[5]);
+		outFile = new FileOutputStream(args[7]);
+		inFile = new FileInputStream(args[6]);
 	}
-	
-	private static void run() throws Exception {
+        
+        private static void run() throws Exception {
 		
                 String mesa = "", jugador = "";
                 int num;
@@ -85,10 +80,19 @@ public class Main {
                 
                 
 	}
-	
-	private void parseArgs(String[] args) throws FileNotFoundException {
-		ej = Integer.parseInt(args[5]);
-		outFile = new FileOutputStream(args[7]);
-		inFile = new FileInputStream(args[6]);
+        
+	public static void main(String args[]) {
+		try {			
+			parseArgs(args);
+                        run();
+		} catch (Exception e) {
+			System.err.println("Something went wrong ...");
+			System.err.println();
+			e.printStackTrace();
+		}
 	}
+	
+	
+	
+	
 }
