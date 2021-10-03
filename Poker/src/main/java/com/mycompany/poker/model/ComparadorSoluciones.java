@@ -128,66 +128,49 @@ public class ComparadorSoluciones {
         if(sol1.getTipo() >= sol2.getTipo())
             return true;
         else if(sol1.getTipo() == sol2.getTipo()){
-            //comparar la carta alta
-            return true;
+            return CartaAlta(sol1, sol2);           
         }
         else
             return false;
     }
     private boolean fullHouse(Solucion sol1, Solucion sol2){
-        if(sol1.getTipo2() > sol2.getTipo2())
-            return true;
-        else if(sol1.getTipo2() == sol2.getTipo2()){
-            return sol1.getTipo() > sol2.getTipo();
-            /*
-            if(sol1.getTipo() > sol2.getTipo())
-                return true;
-            else
-                return false;*/
-        }
-        else
-            return false;
+        if(sol1.getTipo2() == sol2.getTipo2()){
+            return sol1.getTipo() >= sol2.getTipo();
+        }else return sol1.getTipo2() >= sol2.getTipo2();
+        
     }
     private boolean Color(Solucion sol1, Solucion sol2){
-        return sol1.getMano().charAt(0) >= sol2.getMano().charAt(0);
-        /*
-        if(sol1.getMano().charAt(0) >= sol2.getMano().charAt(0))
-            return true;
-        else
-            return false;*/
+        return CartaAlta(sol1, sol2);
     }
     private boolean Escalera(Solucion sol1, Solucion sol2){
         return sol1.getMano().charAt(0) >= sol2.getMano().charAt(0);
-        /*
-        if(sol1.getMano().charAt(0) >= sol2.getMano().charAt(0))
-            return true;
-        else
-            return false;*/
+       
     }
     private boolean Trio(Solucion sol1, Solucion sol2){
-        if(sol1.getTipo() >= sol2.getTipo())
-            return true;
-        else if(sol1.getTipo() == sol2.getTipo()){
-            //comparar la carta alta
-            return true;
-        }
-        else
-            return false;
+        if(sol1.getTipo() == sol2.getTipo()){
+            return CartaAlta(sol1, sol2);
+        }else return (sol1.getTipo() >= sol2.getTipo());
     }
     private boolean DoblePareja(Solucion sol1, Solucion sol2){
-        return true;
+        if(sol1.getTipo() == sol2.getTipo()){
+            if(sol1.getTipo2() == sol2.getTipo2()){
+                return CartaAlta(sol1, sol2);
+            }
+            else return sol1.getTipo2() >= sol2.getTipo2();
+        }else return sol1.getTipo() >= sol2.getTipo();
     }
     private boolean Pareja(Solucion sol1, Solucion sol2){
-        if(sol1.getTipo() >= sol2.getTipo())
-            return true;
-        else if(sol1.getTipo() == sol2.getTipo()){
-            //comparar la carta alta
-            return true;
+       if(sol1.getTipo() == sol2.getTipo()){
+            return CartaAlta(sol1, sol2);
         }
         else
-            return false;
+             return(sol1.getTipo() >= sol2.getTipo());
     }
     private boolean CartaAlta(Solucion sol1, Solucion sol2){
-        return true;
+        for(int i = 8; i >= 0; i -= 2){
+                if(sol1.getMano().charAt(i) > sol2.getMano().charAt(i))
+                     return true;
+            }
+        return false;
     }
 }
