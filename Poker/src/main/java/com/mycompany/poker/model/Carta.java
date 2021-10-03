@@ -13,7 +13,7 @@ public class Carta {
 	private int num;
         private boolean jugador;
 	
-	public Carta(char p, char n, boolean jugador){
+	public Carta(char n, char p, boolean jugador){
 		this.palo = p;
 		this.num = parseaCarta(n);
                 this.jugador = jugador;
@@ -104,10 +104,10 @@ public class Carta {
                     }
                         
                 }
-            
+            Character aaa = palo;
             if(jugador)
-                return "\033[0;1m" + aux1 + palo;
+                return "\033[0;1m" + aux1 + aaa.toString();
             else
-                return aux.toString() + palo;
+                return aux1.toString() + aaa.toString();
         }
 }

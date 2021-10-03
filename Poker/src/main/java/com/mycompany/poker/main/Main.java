@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.File;
 import java.util.ArrayList;
 import com.mycompany.poker.model.Mano;
 
@@ -21,9 +22,11 @@ public class Main {
         private ArrayList<Mano> manos;
 	
         private static void parseArgs(String[] args) throws FileNotFoundException {
-		ej = Integer.parseInt(args[5]);
-		outFile = new FileOutputStream(args[7]);
-		inFile = new FileInputStream(args[6]);
+		ej = Integer.parseInt(args[0]);
+                String aux = args[1];
+                inFile = new FileInputStream(new File("D:\\GitHub\\Poker\\Poker\\resources\\entrada.txt"));
+		outFile = new FileOutputStream(new File(args[2]));
+		
 	}
         
         private static void run() throws Exception {
@@ -34,13 +37,15 @@ public class Main {
 		case 1:
                         while(inFile.available() > 0){
                             for(int i = 0; i < 10; i++){
-                                if(i < 5)
+                                if(i < 4)
                                     jugador += (char) inFile.read();
                                 else
                                     mesa += (char) inFile.read();
                             }
                             Mano mano = new Mano(jugador, mesa,3);
-                            System.out.println(mano.getSolucion().toString());
+                            
+                            System.out.println( "Best Hand: " + mano.getSolucion().toString());
+                            System.out.println( mano.getSolucion().getDraws());
                         }
                         
                         jugador = "";mesa = "";

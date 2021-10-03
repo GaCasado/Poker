@@ -63,6 +63,9 @@ public class Solucion {
     public void setDrawF(String drawF){
         this.drawF = drawF;
     }
+    public String getDraws(){
+        
+    }
     public String toString(){
         switch(jugada){
                 case 1:
@@ -109,7 +112,7 @@ public class Solucion {
                 case 9:
                 {
                     
-                    return "Pair of " + tipo + " " + mano;
+                    return "Pair of " + parseaTipo() + " " + mano;
                 }
 
                 case 10:
@@ -120,4 +123,44 @@ public class Solucion {
             }
         return "Error";
     }
+    
+    private String parseaTipo(){
+        Integer n;Character aux = 'o';String aux1;
+        switch(tipo){
+                    case 14:{
+                        aux = 'A';
+                        aux1 = aux.toString();
+                    }
+                        
+                    break;
+                    case 10:{
+                        aux = 'T';
+                        aux1 = aux.toString();
+                    }
+                    break;
+                    case 11:{
+                        aux = 'J';
+                        aux1 = aux.toString();
+                    }
+                    break;
+                    case 12:{
+                        aux = 'Q';
+                        aux1 = aux.toString();
+                    }
+                    break;
+                    case 13:{
+                        aux = 'K';
+                        aux1 = aux.toString();
+                    }
+                    break;
+                    default:{
+                        n = tipo;
+                        aux1 = n.toString();
+                    }
+                        
+                }
+
+        return aux1.toString();
+    }
+    
 }

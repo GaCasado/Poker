@@ -11,6 +11,8 @@ public class ComparadorSoluciones {
     }
     
     public Solucion compara(Solucion sol1, Solucion sol2){
+        if(sol2 == null)
+            return sol1;
         if(sol1.getJugada() > sol2.getJugada())
             return sol1;
         else if(sol1.getJugada() == sol2.getJugada()){

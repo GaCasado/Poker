@@ -16,7 +16,7 @@ public class Mano {
     //private final int nC;
     private Solucion solucion = null;
     
-    private String manoOrd = "";
+    
     public Mano(String jugador, String mesa, int nC){//nC de entrada es el número de cartas que hay en la mesa
         solucion(jugador , mesa , nC);
     }
@@ -24,6 +24,7 @@ public class Mano {
         ArrayList<Carta> cartas = new ArrayList<>(); Solucion solActual = null;
         ComparadorSoluciones comp = new ComparadorSoluciones();
         for(int i = 0; i < 2; i++){
+            
             cartas.add(new Carta(jugador.charAt(i*2), jugador.charAt(i*2 + 1), true));
         }
         for(int i = 0; i < nC; i++){
@@ -50,6 +51,7 @@ public class Mano {
     
 
     private Solucion buscaJugadas(ArrayList<Carta> cartas){
+        String manoOrd = "";
         Solucion solActual = null;
         Map<Integer,ArrayList<Carta>> repeticiones = new TreeMap<>();//estoy cambiando el mapa
         List<Carta> lista = new ArrayList<>();
@@ -66,8 +68,24 @@ public class Mano {
                 repeticiones.put(cartas.get(i).getNum(), aux1);
             }
                 
-           
-            if(cartas.get(i+1).getPalo() == cartas.get(i).getPalo()){
+           if(i == 0){
+               switch(cartas.get(i).getPalo()) {
+                    case 'h':
+                        colH++;
+                    break;
+                    case 'd':
+                        colD++;
+                    break;
+                    case 'c':
+                        colC++;
+                    break;
+                    case 's':
+                        colS++;
+                    break;
+                }
+           }
+           else{
+               if(cartas.get(i-1).getPalo() == cartas.get(i).getPalo()){
                 switch(cartas.get(i).getPalo()) {
                     case 'h':
                         colH++;
@@ -82,7 +100,9 @@ public class Mano {
                         colS++;
                     break;
                 }
-            }                        
+            } 
+           }
+                                   
         }
         
         for( Map.Entry<Integer, ArrayList<Carta>>  r: repeticiones.entrySet()){
@@ -93,7 +113,7 @@ public class Mano {
                 lista.add(va.get(i));
                 manoOrd += va.get(i).toString();
             }
-                                               
+                                           
             if(va.size() == 2){
                 if(ke > pareja1){
                     pareja2 = pareja1;
