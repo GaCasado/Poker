@@ -29,42 +29,33 @@ public class Mano {
     private void solucion(String jugador, String mesa, int nC){
         //Hacer que esta función llame a busca jugadas con todas las combinaciones
         //No se si lo he hecho bien
-        ArrayList<Carta> cartasJ = new ArrayList<>(); Solucion solActual = null;
+        ArrayList<Carta> cartas = new ArrayList<>(); Solucion solActual = null;
         ComparadorSoluciones comp = new ComparadorSoluciones();
         for(int i = 0; i < 2; i++){
-            cartasJ.add(new Carta(jugador.charAt(i*2), jugador.charAt(i*2 + 1), true));
+            cartas.add(new Carta(jugador.charAt(i*2), jugador.charAt(i*2 + 1), true));
+        }
+        for(int i = 0; i < nC; i++){
+            cartas.add(new Carta(mesa.charAt(i*2), mesa.charAt(i*2 + 1), false));
         }
         
-        for(int i = 0; i < nC - 2; i++){
-            ArrayList<Carta> cartas = new ArrayList<>();
-            cartas = cartasJ;
-            for(int j = 0; j < nC; j++){// esto esta mal hay que cambiarlo
-                if(i != j){
-                    cartas.add(new Carta(mesa.charAt(j*2), mesa.charAt(j*2 + 1), false));
-                } 
-            }
-            solActual = buscaJugadas(cartas);
-            solucion = comp.compara(solActual, solucion);
+        switch (nC) {
+            case 3:
+                solActual = buscaJugadas(cartas);
+                solucion = comp.compara(solActual, solucion);
+                break;
+            case 4:
+                caso4Cartas(cartas);
+                break;
+            default:
+                caso5Cartas(cartas);
+                break;
         }
+        solActual = buscaJugadas(cartas);
+        solucion = comp.compara(solActual, solucion);
+        
+        
     }
-    private Solucion ayuda(String mesa, ArrayList<Carta> cartasJ, int k, int nC, boolean co[], ArrayList<Carta> cartas){
-        ComparadorSoluciones comp = new ComparadorSoluciones();
-        for(int i = 0; i < nC - 2; i++){
-            if(!co[i]){
-                co[i] = true;
-                cartas.add(new Carta(mesa.charAt(k*2), mesa.charAt(k*2 + 1), false));
-                if(k == 3){
-                    cartas.addAll(cartasJ);
-                    Solucion solActual = buscaJugadas(cartas);
-                    solucion = comp.compara(solActual, solucion);
-                }
-                else{
-                    ayuda(mesa, cartasJ, k + 1, nC, co, cartas);
-                }
-            }
-        }
-        return solucion;//esto tendria que estar en parametros porreferencia y no va a funcionar
-    }
+    
 
     private Solucion buscaJugadas(ArrayList<Carta> cartas){
         Solucion solActual = null;
@@ -285,5 +276,205 @@ public class Mano {
             return null;
         return proye;
     }*/
+    private void caso4Cartas(ArrayList<Carta> cartas){
+        ArrayList<Carta> cartas5 = new ArrayList<>(); Solucion solActual = null; ComparadorSoluciones comp = new ComparadorSoluciones();
+        cartas5.add(cartas.get(0));
+        cartas5.add(cartas.get(1));
+        cartas5.add(cartas.get(2));
+        cartas5.add(cartas.get(3));
+        cartas5.add(cartas.get(4));
+        solActual = buscaJugadas(cartas5);
+        solucion = comp.compara(solActual, solucion);
+        
+        cartas5 = new ArrayList<>();
+        cartas5.add(cartas.get(0));
+        cartas5.add(cartas.get(1));
+        cartas5.add(cartas.get(2));
+        cartas5.add(cartas.get(3));
+        cartas5.add(cartas.get(5));
+        solActual = buscaJugadas(cartas5);
+        solucion = comp.compara(solActual, solucion);
+        
+        cartas5 = new ArrayList<>();
+        cartas5.add(cartas.get(0));
+        cartas5.add(cartas.get(1));
+        cartas5.add(cartas.get(2));
+        cartas5.add(cartas.get(4));
+        cartas5.add(cartas.get(5));
+        solActual = buscaJugadas(cartas5);
+        solucion = comp.compara(solActual, solucion);
+        
+        cartas5 = new ArrayList<>();
+        cartas5.add(cartas.get(0));
+        cartas5.add(cartas.get(1));
+        cartas5.add(cartas.get(3));
+        cartas5.add(cartas.get(4));
+        cartas5.add(cartas.get(5));
+        solActual = buscaJugadas(cartas5);
+        solucion = comp.compara(solActual, solucion);
+        
+        cartas5 = new ArrayList<>();
+        cartas5.add(cartas.get(0));
+        cartas5.add(cartas.get(2));
+        cartas5.add(cartas.get(3));
+        cartas5.add(cartas.get(4));
+        cartas5.add(cartas.get(5));
+        solActual = buscaJugadas(cartas5);
+        solucion = comp.compara(solActual, solucion);
+        
+        cartas5 = new ArrayList<>();
+        cartas5.add(cartas.get(1));
+        cartas5.add(cartas.get(2));
+        cartas5.add(cartas.get(3));
+        cartas5.add(cartas.get(4));
+        cartas5.add(cartas.get(5));
+        solActual = buscaJugadas(cartas5);
+        solucion = comp.compara(solActual, solucion);
+    }
     
+    private void caso5Cartas(ArrayList<Carta> cartas){
+        ArrayList<Carta> cartas5 = new ArrayList<>(); Solucion solActual = null; ComparadorSoluciones comp = new ComparadorSoluciones();
+        cartas5.add(cartas.get(0));
+        cartas5.add(cartas.get(1));
+        cartas5.add(cartas.get(2));//1
+        cartas5.add(cartas.get(3));
+        cartas5.add(cartas.get(4));
+        solActual = buscaJugadas(cartas5);
+        solucion = comp.compara(solActual, solucion);
+        
+        cartas5 = new ArrayList<>();
+        cartas5.add(cartas.get(0));
+        cartas5.add(cartas.get(1));
+        cartas5.add(cartas.get(2));//2
+        cartas5.add(cartas.get(3));
+        cartas5.add(cartas.get(5));
+        solActual = buscaJugadas(cartas5);
+        solucion = comp.compara(solActual, solucion);
+        
+        cartas5 = new ArrayList<>();
+        cartas5.add(cartas.get(0));
+        cartas5.add(cartas.get(1));
+        cartas5.add(cartas.get(2));//3
+        cartas5.add(cartas.get(4));
+        cartas5.add(cartas.get(5));
+        solActual = buscaJugadas(cartas5);
+        solucion = comp.compara(solActual, solucion);
+        
+        cartas5 = new ArrayList<>();
+        cartas5.add(cartas.get(0));
+        cartas5.add(cartas.get(1));
+        cartas5.add(cartas.get(3));//4
+        cartas5.add(cartas.get(4));
+        cartas5.add(cartas.get(5));
+        solActual = buscaJugadas(cartas5);
+        solucion = comp.compara(solActual, solucion);
+        
+        cartas5 = new ArrayList<>();
+        cartas5.add(cartas.get(0));
+        cartas5.add(cartas.get(2));
+        cartas5.add(cartas.get(3));//5
+        cartas5.add(cartas.get(4));
+        cartas5.add(cartas.get(5));
+        solActual = buscaJugadas(cartas5);
+        solucion = comp.compara(solActual, solucion);
+        
+        cartas5 = new ArrayList<>();
+        cartas5.add(cartas.get(1));
+        cartas5.add(cartas.get(2));
+        cartas5.add(cartas.get(3));//6
+        cartas5.add(cartas.get(4));
+        cartas5.add(cartas.get(5));
+        solActual = buscaJugadas(cartas5);
+        solucion = comp.compara(solActual, solucion);
+        
+        cartas5 = new ArrayList<>();
+        cartas5.add(cartas.get(0));
+        cartas5.add(cartas.get(1));
+        cartas5.add(cartas.get(2));//7
+        cartas5.add(cartas.get(4));
+        cartas5.add(cartas.get(6));
+        solActual = buscaJugadas(cartas5);
+        solucion = comp.compara(solActual, solucion);
+        
+        cartas5 = new ArrayList<>();
+        cartas5.add(cartas.get(0));
+        cartas5.add(cartas.get(1));
+        cartas5.add(cartas.get(2));//8
+        cartas5.add(cartas.get(5));
+        cartas5.add(cartas.get(6));
+        solActual = buscaJugadas(cartas5);
+        solucion = comp.compara(solActual, solucion);
+        
+        cartas5 = new ArrayList<>();
+        cartas5.add(cartas.get(0));
+        cartas5.add(cartas.get(1));
+        cartas5.add(cartas.get(3));//9
+        cartas5.add(cartas.get(4));
+        cartas5.add(cartas.get(6));
+        solActual = buscaJugadas(cartas5);
+        solucion = comp.compara(solActual, solucion);
+        
+        cartas5 = new ArrayList<>();
+        cartas5.add(cartas.get(0));
+        cartas5.add(cartas.get(1));
+        cartas5.add(cartas.get(4));//10
+        cartas5.add(cartas.get(5));
+        cartas5.add(cartas.get(6));
+        solActual = buscaJugadas(cartas5);
+        solucion = comp.compara(solActual, solucion);
+        
+        cartas5 = new ArrayList<>();
+        cartas5.add(cartas.get(0));
+        cartas5.add(cartas.get(1));
+        cartas5.add(cartas.get(2));//11
+        cartas5.add(cartas.get(3));
+        cartas5.add(cartas.get(6));
+        solActual = buscaJugadas(cartas5);
+        solucion = comp.compara(solActual, solucion);
+        
+        cartas5 = new ArrayList<>();
+        cartas5.add(cartas.get(0));
+        cartas5.add(cartas.get(2));
+        cartas5.add(cartas.get(3));//12
+        cartas5.add(cartas.get(4));
+        cartas5.add(cartas.get(6));
+        solActual = buscaJugadas(cartas5);
+        solucion = comp.compara(solActual, solucion);
+        
+        cartas5 = new ArrayList<>();
+        cartas5.add(cartas.get(0));
+        cartas5.add(cartas.get(3));
+        cartas5.add(cartas.get(4));//13
+        cartas5.add(cartas.get(5));
+        cartas5.add(cartas.get(6));
+        solActual = buscaJugadas(cartas5);
+        solucion = comp.compara(solActual, solucion);
+        
+        cartas5 = new ArrayList<>();
+        cartas5.add(cartas.get(1));
+        cartas5.add(cartas.get(2));
+        cartas5.add(cartas.get(3));//14
+        cartas5.add(cartas.get(4));
+        cartas5.add(cartas.get(6));
+        solActual = buscaJugadas(cartas5);
+        solucion = comp.compara(solActual, solucion);
+        
+        cartas5 = new ArrayList<>();
+        cartas5.add(cartas.get(1));
+        cartas5.add(cartas.get(3));
+        cartas5.add(cartas.get(4));//15
+        cartas5.add(cartas.get(5));
+        cartas5.add(cartas.get(6));
+        solActual = buscaJugadas(cartas5);
+        solucion = comp.compara(solActual, solucion);
+        
+        cartas5 = new ArrayList<>();
+        cartas5.add(cartas.get(2));
+        cartas5.add(cartas.get(3));
+        cartas5.add(cartas.get(4));//16
+        cartas5.add(cartas.get(5));
+        cartas5.add(cartas.get(6));
+        solActual = buscaJugadas(cartas5);
+        solucion = comp.compara(solActual, solucion);
+    }
 }
