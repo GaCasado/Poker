@@ -37,7 +37,7 @@ public class Main {
                 int num;
 		switch (ej) {
 		case 1:
-                        while(inFile.available() != 0){
+                        while(inFile.available() > 0){
                             for(int i = 0; i < 10; i++){
                                 if(i < 5)
                                     jugador += (char) inFile.read();
@@ -51,7 +51,7 @@ public class Main {
                         jugador = "";mesa = "";
 			break;
 		case 2:
-                        while(inFile.available() != 0){
+                        while(inFile.available() > 0){
                             for(int i = 0; i < 4; i++){
                               jugador += (char) inFile.read();
                             }
