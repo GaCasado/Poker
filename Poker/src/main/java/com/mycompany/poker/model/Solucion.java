@@ -81,54 +81,54 @@ public class Solucion {
         switch(jugada){
                 case 1:
                 {
-                    return "";
+                    return "Royal Flush (" + mano + " )";
                 }
                 
                 case 2:
                 {
                     
-                    return "";
+                    return "Straight Flush " + parseaTipo() + " (" + mano + " )";
                 }
 
                 case 3:
                 {
-                    return "";
+                    return "Poker of " + parseaTipo() + " (" + mano + " )";
                 }
 
                 case 4:
                 {
-                    return "";
+                    return "Full House of " + parseaTipo() + "and" + parseaTipo2() + " (" + mano + " )";
                 }
 
                 case 5:
                 {
-                    return "";
+                    return "Flush (" + mano + " )";
                 }
 
                 case 6:
                 {
-                    return "";
+                    return "Straigth (" + mano + ")";
                 }
 
                 case 7:
                 {
-                    return "";
+                    return "Three of a kind of " + parseaTipo() + " (" + mano + " )";
                 }
 
                 case 8:
                 {
-                    return "";
+                    return "Two Pairs of " + parseaTipo() + "and" + parseaTipo2() + " (" + mano + " )";
                 }
 
                 case 9:
                 {
                     
-                    return "Pair of " + parseaTipo() + " " + mano;
+                    return "Pair of " + parseaTipo() + " (" + mano + " )";
                 }
 
                 case 10:
                 {
-                    return "";
+                    return "High Hand " + parseaTipo() + " (" + mano + " )";
                 }
 
             }
@@ -173,5 +173,42 @@ public class Solucion {
 
         return aux1.toString();
     }
-    
+    private String parseaTipo2(){
+        Integer n;Character aux = 'o';String aux1;
+        switch(tipo2){
+                    case 14:{
+                        aux = 'A';
+                        aux1 = aux.toString();
+                    }
+                        
+                    break;
+                    case 10:{
+                        aux = 'T';
+                        aux1 = aux.toString();
+                    }
+                    break;
+                    case 11:{
+                        aux = 'J';
+                        aux1 = aux.toString();
+                    }
+                    break;
+                    case 12:{
+                        aux = 'Q';
+                        aux1 = aux.toString();
+                    }
+                    break;
+                    case 13:{
+                        aux = 'K';
+                        aux1 = aux.toString();
+                    }
+                    break;
+                    default:{
+                        n = tipo;
+                        aux1 = n.toString();
+                    }
+                        
+                }
+
+        return aux1.toString();
+    }
 }
