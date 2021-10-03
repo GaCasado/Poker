@@ -17,7 +17,7 @@ public class ComparadorSoluciones {
             switch(sol1.getJugada()){
                 case 1:
                 {
-                    if(compara1(sol1, sol2))
+                    if(escaleraReal(sol1, sol2))
                         return sol1;
                     else
                         return sol2;                   
@@ -25,7 +25,7 @@ public class ComparadorSoluciones {
                 
                 case 2:
                 {
-                    if(compara2(sol1, sol2))
+                    if(escaleraColor(sol1, sol2))
                         return sol1;
                     else
                         return sol2;
@@ -33,7 +33,7 @@ public class ComparadorSoluciones {
 
                 case 3:
                 {
-                    if(compara3(sol1, sol2))
+                    if(Poker(sol1, sol2))
                         return sol1;
                     else
                         return sol2;
@@ -41,7 +41,7 @@ public class ComparadorSoluciones {
 
                 case 4:
                 {
-                    if(compara4(sol1, sol2))
+                    if(fullHouse(sol1, sol2))
                         return sol1;
                     else
                         return sol2;
@@ -49,7 +49,7 @@ public class ComparadorSoluciones {
 
                 case 5:
                 {
-                    if(compara5(sol1, sol2))
+                    if(Color(sol1, sol2))
                         return sol1;
                     else
                         return sol2;
@@ -57,7 +57,7 @@ public class ComparadorSoluciones {
 
                 case 6:
                 {
-                    if(compara6(sol1, sol2))
+                    if(Escalera(sol1, sol2))
                         return sol1;
                     else
                         return sol2;
@@ -65,7 +65,7 @@ public class ComparadorSoluciones {
 
                 case 7:
                 {
-                    if(compara7(sol1, sol2))
+                    if(Trio(sol1, sol2))
                         return sol1;
                     else
                         return sol2;
@@ -73,7 +73,7 @@ public class ComparadorSoluciones {
 
                 case 8:
                 {
-                    if(compara8(sol1, sol2))
+                    if(DoblePareja(sol1, sol2))
                         return sol1;
                     else
                         return sol2;
@@ -81,7 +81,7 @@ public class ComparadorSoluciones {
 
                 case 9:
                 {
-                    if(compara9(sol1, sol2))
+                    if(Pareja(sol1, sol2))
                         return sol1;
                     else
                         return sol2;
@@ -89,7 +89,7 @@ public class ComparadorSoluciones {
 
                 case 10:
                 {
-                    if(compara10(sol1, sol2))
+                    if(CartaAlta(sol1, sol2))
                         return sol1;
                     else
                         return sol2;
@@ -113,16 +113,16 @@ public class ComparadorSoluciones {
         9. Parejas
         10. Carta alta
         */
-    private boolean compara1(Solucion sol1, Solucion sol2){
+    private boolean escaleraReal(Solucion sol1, Solucion sol2){
         return true;
     }
-    private boolean compara2(Solucion sol1, Solucion sol2){
+    private boolean escaleraColor(Solucion sol1, Solucion sol2){
         if(sol1.getMano().charAt(0) >= sol2.getMano().charAt(0))
             return true;
         else
             return false;
     }
-    private boolean compara3(Solucion sol1, Solucion sol2){
+    private boolean Poker(Solucion sol1, Solucion sol2){
         if(sol1.getTipo() >= sol2.getTipo())
             return true;
         else if(sol1.getTipo() == sol2.getTipo()){
@@ -132,7 +132,7 @@ public class ComparadorSoluciones {
         else
             return false;
     }
-    private boolean compara4(Solucion sol1, Solucion sol2){
+    private boolean fullHouse(Solucion sol1, Solucion sol2){
         if(sol1.getTipo2() > sol2.getTipo2())
             return true;
         else if(sol1.getTipo2() == sol2.getTipo2()){
@@ -146,7 +146,7 @@ public class ComparadorSoluciones {
         else
             return false;
     }
-    private boolean compara5(Solucion sol1, Solucion sol2){
+    private boolean Color(Solucion sol1, Solucion sol2){
         return sol1.getMano().charAt(0) >= sol2.getMano().charAt(0);
         /*
         if(sol1.getMano().charAt(0) >= sol2.getMano().charAt(0))
@@ -154,7 +154,7 @@ public class ComparadorSoluciones {
         else
             return false;*/
     }
-    private boolean compara6(Solucion sol1, Solucion sol2){
+    private boolean Escalera(Solucion sol1, Solucion sol2){
         return sol1.getMano().charAt(0) >= sol2.getMano().charAt(0);
         /*
         if(sol1.getMano().charAt(0) >= sol2.getMano().charAt(0))
@@ -162,7 +162,7 @@ public class ComparadorSoluciones {
         else
             return false;*/
     }
-    private boolean compara7(Solucion sol1, Solucion sol2){
+    private boolean Trio(Solucion sol1, Solucion sol2){
         if(sol1.getTipo() >= sol2.getTipo())
             return true;
         else if(sol1.getTipo() == sol2.getTipo()){
@@ -172,10 +172,10 @@ public class ComparadorSoluciones {
         else
             return false;
     }
-    private boolean compara8(Solucion sol1, Solucion sol2){
+    private boolean DoblePareja(Solucion sol1, Solucion sol2){
         return true;
     }
-    private boolean compara9(Solucion sol1, Solucion sol2){
+    private boolean Pareja(Solucion sol1, Solucion sol2){
         if(sol1.getTipo() >= sol2.getTipo())
             return true;
         else if(sol1.getTipo() == sol2.getTipo()){
@@ -185,7 +185,7 @@ public class ComparadorSoluciones {
         else
             return false;
     }
-    private boolean compara10(Solucion sol1, Solucion sol2){
+    private boolean CartaAlta(Solucion sol1, Solucion sol2){
         return true;
     }
 }

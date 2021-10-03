@@ -7,9 +7,9 @@ package com.mycompany.poker.model;
 
 public class Solucion {
     private int jugada;
-    private int tipo;
-    private int tipo2;
-    private String mano;
+    private int tipo; // pareja 1 de full house o doble pareja
+    private int tipo2; // segunda pareja para la doble pareja o trio para el full house
+    private String mano; // las 5 cartas que has cogido
     private String drawSg, drawSo, drawF;
     
     public Solucion(int jugada, String mano) {
