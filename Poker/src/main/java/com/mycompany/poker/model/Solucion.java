@@ -67,13 +67,13 @@ public class Solucion {
         String texto = "";
         
         if(drawSg != null){
-            texto += "Draw: Gutshot";
+            texto += "Draw: Straight Gutshot\n";
         }
         if(drawSo != null){
-            texto += "Draw: Open Ended";
+            texto += "Draw: Straight Open Ended\n";
         }
         if(drawF != null){
-            texto += "Draw: Flush";
+            texto += "Draw: Flush\n";
         }
         return texto;
     }

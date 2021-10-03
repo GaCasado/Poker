@@ -89,9 +89,9 @@ public class Mano {
         for( Map.Entry<Integer, ArrayList<Carta>>  r: repeticiones.entrySet()){
             Integer ke = r.getKey();//hacer que la clave sea el número y el valor una lista de cartas
             ArrayList<Carta> va = r.getValue();
-            
+            lista.add(va.get(0));
             for(int i = 0; i < va.size();i++){
-                lista.add(va.get(i));
+                
                 manoOrd += va.get(i).toString();
             }
                                            
@@ -142,8 +142,10 @@ public class Mano {
         else if (lista.size() == 4){
             // si la primera y la ultima no tienen repes en el map es que hay hueco en medio
             // si una de esas tiene es proyecto del normal
-            //hay proyecto
-            if(repeticiones.get(lista.get(0).getNum()).size() == 1 && repeticiones.get(lista.get(3).getNum()).size() == 1){
+            //hay proyecto repeticiones.get(lista.get(0).getNum()).size() == 1 && repeticiones.get(lista.get(3).getNum()).size() == 1
+            //System.out.println(lista.get(3).getNum() -  lista.get(0).getNum());
+            if(lista.get(3).getNum() -  lista.get(0).getNum()== 5){
+                
                     drawSg = "gutshot " + manoOrd;
             }
             else{
