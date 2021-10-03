@@ -87,7 +87,7 @@ public class Solucion {
                 case 2:
                 {
                     
-                    return "Straight Flush " + parseaTipo() + " (" + mano + " )";
+                    return "Straight Flush (" + mano + " )";
                 }
 
                 case 3:
