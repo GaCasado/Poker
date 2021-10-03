@@ -64,7 +64,17 @@ public class Solucion {
         this.drawF = drawF;
     }
     public String getDraws(){
-        
+        String texto = "";
+        if(drawSg == null){
+            texto += "Draw: Gutshot";
+        }
+        if(drawSo == null){
+            texto += "Draw: Open Ended";
+        }
+        if(drawF == null){
+            texto += "Draw: Flush";
+        }
+        return texto;
     }
     public String toString(){
         switch(jugada){
