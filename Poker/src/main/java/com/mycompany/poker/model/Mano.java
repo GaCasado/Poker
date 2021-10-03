@@ -68,8 +68,8 @@ public class Mano {
                 repeticiones.put(cartas.get(i).getNum(), aux1);
             }
                 
-           if(i == 0){
-               switch(cartas.get(i).getPalo()) {
+           
+           switch(cartas.get(i).getPalo()) {
                     case 'h':
                         colH++;
                     break;
@@ -82,26 +82,7 @@ public class Mano {
                     case 's':
                         colS++;
                     break;
-                }
-           }
-           else{
-               if(cartas.get(i-1).getPalo() == cartas.get(i).getPalo()){
-                switch(cartas.get(i).getPalo()) {
-                    case 'h':
-                        colH++;
-                    break;
-                    case 'd':
-                        colD++;
-                    break;
-                    case 'c':
-                        colC++;
-                    break;
-                    case 's':
-                        colS++;
-                    break;
-                }
-            } 
-           }
+            }
                                    
         }
         
@@ -238,6 +219,8 @@ public class Mano {
             solActual.setDrawSg(drawSg);
         else if(drawSo != null)
             solActual.setDrawSo(drawSo);
+        
+        
         if(colH == 4 || colD  == 4 || colC == 4 || colS == 4)//si hay que decir que color es se cambia
             solActual.setDrawF(manoOrd);
         return solActual;

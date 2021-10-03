@@ -65,13 +65,14 @@ public class Solucion {
     }
     public String getDraws(){
         String texto = "";
-        if(drawSg == null){
+        
+        if(drawSg != null){
             texto += "Draw: Gutshot";
         }
-        if(drawSo == null){
+        if(drawSo != null){
             texto += "Draw: Open Ended";
         }
-        if(drawF == null){
+        if(drawF != null){
             texto += "Draw: Flush";
         }
         return texto;
