@@ -20,7 +20,7 @@ public class Main {
 	private static InputStream inFile = null;
         private ArrayList<Mano> manos;
 	
-	public Main(String[] args) {
+	public static void main(String args[]) {
 		try {			
 			parseArgs(args);
                         run();
@@ -31,7 +31,7 @@ public class Main {
 		}
 	}
 	
-	private void run() throws Exception {
+	private static void run() throws Exception {
 		
                 String mesa = "", jugador = "";
                 int num;
