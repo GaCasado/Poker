@@ -108,7 +108,8 @@ public class Solucion {
 
                 case 9:
                 {
-                    return "";
+                    
+                    return "Pair of " + tipo + " " + mano;
                 }
 
                 case 10:

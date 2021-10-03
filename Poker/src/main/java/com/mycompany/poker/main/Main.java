@@ -45,6 +45,7 @@ public class Main {
                                     mesa += (char) inFile.read();
                             }
                             Mano mano = new Mano(jugador, mesa,3);
+                            System.out.println(mano.getSolucion().toString());
                         }
                         
                         jugador = "";mesa = "";

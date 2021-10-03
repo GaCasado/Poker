@@ -47,6 +47,24 @@ public class Mano {
             solucion = comp.compara(solActual, solucion);
         }
     }
+    private Solucion ayuda(String mesa, ArrayList<Carta> cartasJ, int k, int nC, boolean co[], ArrayList<Carta> cartas){
+        ComparadorSoluciones comp = new ComparadorSoluciones();
+        for(int i = 0; i < nC - 2; i++){
+            if(!co[i]){
+                co[i] = true;
+                cartas.add(new Carta(mesa.charAt(k*2), mesa.charAt(k*2 + 1), false));
+                if(k == 3){
+                    cartas.addAll(cartasJ);
+                    Solucion solActual = buscaJugadas(cartas);
+                    solucion = comp.compara(solActual, solucion);
+                }
+                else{
+                    ayuda(mesa, cartasJ, k + 1, nC, co, cartas);
+                }
+            }
+        }
+        return solucion;//esto tendria que estar en parametros porreferencia y no va a funcionar
+    }
 
     private Solucion buscaJugadas(ArrayList<Carta> cartas){
         Solucion solActual = null;
@@ -223,6 +241,10 @@ public class Mano {
             solActual.setDrawF(manoOrd);
         return solActual;
     }
+    
+    public Solucion getSolucion(){
+        return solucion;
+    }
     /*
     private String parseaNumero(int entrada){
         String salida;Integer aux = entrada;
@@ -263,4 +285,5 @@ public class Mano {
             return null;
         return proye;
     }*/
+    
 }
