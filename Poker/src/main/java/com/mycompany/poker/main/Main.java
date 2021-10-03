@@ -12,6 +12,7 @@ import java.io.OutputStream;
 import java.io.File;
 import java.util.ArrayList;
 import com.mycompany.poker.model.Mano;
+import com.mycompany.poker.model.ComparadorSoluciones;
 
 public class Main {
 
@@ -19,7 +20,7 @@ public class Main {
 	private int numCartas;
 	private static OutputStream outFile = null;
 	private static InputStream inFile = null;
-        private ArrayList<Mano> manos;
+        private static ArrayList<Mano> manos;
 	
         private static void parseArgs(String[] args) throws FileNotFoundException {
 		ej = Integer.parseInt(args[0]);
@@ -32,7 +33,7 @@ public class Main {
         private static void run() throws Exception {
 		
                 String mesa = "", jugador = "";
-                int num;
+                int num, numJugadores;
 		switch (ej) {
 		case 1:
                         while(inFile.available() > 0){
@@ -62,18 +63,48 @@ public class Main {
                                 mesa += (char) inFile.read();
                             }
                             Mano mano = new Mano(jugador, mesa,num);
-                        }
+                            
+                            
+                        System.out.println(jugador + ';' + num + ';' + mesa);
+                        System.out.println( " - Best Hand: " + mano.getSolucion().toString());
+                        System.out.println( mano.getSolucion().getDraws());
                         jugador = "";mesa = "";
+                        }
+                       
 			break;
 		case 3:
+                        ArrayList<String> cartasJugador = null;
+                        String manJug;
+                        num = 7;
+                        ComparadorSoluciones comp = new ComparadorSoluciones();
                     	while(inFile.available() != 0){
-                            
+                            numJugadores = (int) inFile.read(); //lee numero de jugadores
+                            inFile.skip(1); // Salta el punto y coma
+                            for(int i =0; i< numJugadores;i++){//lee todas las manos de los jugadores
+                                manJug = "";
+                                inFile.skip(2); // Salta el nombre del jugador
+                                manJug += (char) inFile.read();
+                                manJug += (char) inFile.read();
+                                cartasJugador.add(manJug);
+                                inFile.skip(1); // Salta el punto y coma
+                            }
+                            for(int i = 0; i < 10; i++){//Leo la mesa
+                                 mesa += (char) inFile.read();
+                            }
+                            for(int i = 0; i< numJugadores; i++){
+                                manos.add(new Mano(cartasJugador.get(i), mesa, num));
+                            }      
+                            //comparar y ordenar a los jugadores para escribirlos despues
+                            while(){
+                                
+                            }
+                        jugador = "";mesa = "";cartasJugador.clear();                            
                         }
-                        jugador = "";mesa = "";
+                        
 			break;
 		case 4:
                         while(inFile.available() != 0){
-                            
+
                         }
                         jugador = "";mesa = "";
 			break;
