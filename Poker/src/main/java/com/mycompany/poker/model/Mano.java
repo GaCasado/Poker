@@ -56,13 +56,17 @@ public class Mano {
         int pareja1 = -1, pareja2 = -1, trio = -1, poker = -1;
         String escalera = null, escaleraReal = null, escaleraColor = null, drawSg = null,drawSo = null, drawF = null;
         
-       ArrayList<Carta> aux1 = new ArrayList<>();
+       //ArrayList<Carta> aux1 = new ArrayList<>();
        
         for(int i = 0; i < 5; i++){
-            
-            aux1 = repeticiones.putIfAbsent(cartas.get(i).getNum(), new ArrayList<>(cartas.get(i)));
-            if(aux1 != null)
-                repeticiones.put(cartas.get(i), aux1++);
+            ArrayList<Carta> aux1 = new ArrayList<>();
+            aux1.add(cartas.get(i));
+            aux1 = repeticiones.putIfAbsent(cartas.get(i).getNum(), aux1);
+            if(aux1 != null){
+                aux1.add(cartas.get(i));
+                repeticiones.put(cartas.get(i).getNum(), aux1);
+            }
+                
            
             if(cartas.get(i+1).getPalo() == cartas.get(i).getPalo()){
                 switch(cartas.get(i).getPalo()) {
@@ -82,27 +86,28 @@ public class Mano {
             }                        
         }
         
-        for( Map.Entry<Carta, Integer>  r: repeticiones.entrySet()){//esto esta mal
-            Carta auxC = r.getKey();//hacer que la clave sea el número y el valor una lista de cartas
-            int auxR = r.getValue();
+        for( Map.Entry<Integer, ArrayList<Carta>>  r: repeticiones.entrySet()){
+            Integer ke = r.getKey();//hacer que la clave sea el número y el valor una lista de cartas
+            ArrayList<Carta> va = r.getValue();
             
-            lista.add(auxC);
-            
-            manoOrd += auxC.toString();
-            
-            if(auxR == 2){
-                if(auxC.getNum() > pareja1){
+            for(int i = 0; i < va.size();i++){
+                lista.add(va.get(i));
+                manoOrd += va.get(i).toString();
+            }
+                                               
+            if(va.size() == 2){
+                if(ke > pareja1){
                     pareja2 = pareja1;
-                    pareja1 = auxC.getNum();
+                    pareja1 = ke;
                 }    
             }
-            else if(auxR == 3){
-                if(auxC.getNum() > trio)
-                    trio = auxC.getNum();
+            else if(va.size() == 3){
+                if(ke > trio)
+                    trio = ke;
             }
-            else if(auxR == 4){
-                if(auxC.getNum() > poker)
-                    poker = auxC.getNum();
+            else if(va.size() == 4){
+                if(ke > poker)
+                    poker = ke;
             }
         }
         
@@ -138,7 +143,7 @@ public class Mano {
             // si la primera y la ultima no tienen repes en el map es que hay hueco en medio
             // si una de esas tiene es proyecto del normal
             //hay proyecto
-            if(repeticiones.get(lista.get(0)) == 1 && repeticiones.get(lista.get(3)) == 1){
+            if(repeticiones.get(lista.get(0).getNum()).size() == 1 && repeticiones.get(lista.get(3).getNum()).size() == 1){
                     drawSg = "gutshot " + manoOrd;
             }
             else{
