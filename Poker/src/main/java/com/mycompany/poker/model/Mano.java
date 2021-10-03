@@ -132,7 +132,7 @@ public class Mano {
                 }
             }
             
-            else if(lista.get(0).getNum() - lista.get(4).getNum() == 6){
+            else if(lista.get(0).getNum() - lista.get(3).getNum() == 5 || lista.get(1).getNum() - lista.get(4).getNum() == 5){
                 drawSg = "gutshot " + manoOrd;
             } 
             else if(lista.get(0).getNum() - lista.get(3).getNum() == 4 || lista.get(1).getNum() - lista.get(4).getNum() == 4){//esto lo tengo que terminar               
