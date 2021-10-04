@@ -5,7 +5,7 @@
 package com.mycompany.poker.model;
 
 
-public class Solucion {
+public class Solucion implements Comparable<Solucion> {
     private int jugada;
     private int tipo; // pareja 1 de full house o doble pareja
     private int tipo2; // segunda pareja para la doble pareja o trio para el full house
@@ -210,5 +210,19 @@ public class Solucion {
                 }
 
         return aux1.toString();
+    }
+
+    @Override
+    public int compareTo(Solucion o) {
+        ComparadorSoluciones comp = new ComparadorSoluciones();
+        if(this.jugada > o.getJugada()) return 1;
+        else if(this.jugada == o.getJugada()){
+            if(this == comp.compara(this, o))
+                return 1;
+            else
+                return -1;
+        }
+        else
+            return -1;
     }
 }
