@@ -31,12 +31,7 @@ public class Main {
                 String aux = args[1];
                 inFile = new FileInputStream(new File("D:\\GitHub\\Poker\\Poker\\resources\\entrada.txt"));
 		outFile = new FileOutputStream(new File(args[2]));
-		if(args[3] != null){
-                    gui = true;
-                }
-                else{
-                    gui = false;
-                }
+		
 	}
         
         private static void run() throws Exception {
