@@ -111,7 +111,7 @@ public class Mano {
         
         if(lista.size() == 5){
             
-            if(lista.get(4).getNum() -lista.get(0).getNum()  == 5){//hay escalera
+            if(lista.get(4).getNum() -lista.get(0).getNum()  == 4){//hay escalera
                 
                 if(lista.get(4).getPalo() == lista.get(3).getPalo()// Escalera de color o Real
                         && lista.get(4).getPalo() == lista.get(2).getPalo()
@@ -130,10 +130,10 @@ public class Mano {
                 }
             }
             
-            else if(lista.get(3).getNum() - lista.get(0).getNum() == 5 || lista.get(4).getNum() - lista.get(1).getNum() == 5){
+            else if(lista.get(3).getNum() - lista.get(0).getNum() == 4 || lista.get(4).getNum() - lista.get(1).getNum() == 4){
                 drawSg = "gutshot " + manoOrd;
             } 
-            else if(lista.get(3).getNum() - lista.get(0).getNum() == 4 || lista.get(4).getNum() - lista.get(1).getNum() == 4){//esto lo tengo que terminar               
+            else if(lista.get(3).getNum() - lista.get(0).getNum() == 3 || lista.get(4).getNum() - lista.get(1).getNum() == 3){//esto lo tengo que terminar               
                 drawSo = "open-ended " + manoOrd;               
             }
         }
