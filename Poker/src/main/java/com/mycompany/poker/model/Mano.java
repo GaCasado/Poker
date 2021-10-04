@@ -92,19 +92,22 @@ public class Mano {
                 manoOrd += va.get(i).toString();
             }
                                            
-            if(va.size() == 2){
-                if(ke > pareja1){
-                    pareja2 = pareja1;
-                    pareja1 = ke;
-                }
-            }
-            else if(va.size() == 3){
-                if(ke > trio)
-                    trio = ke;
-            }
-            else if(va.size() == 4){
-                if(ke > poker)
-                    poker = ke;
+            switch (va.size()) {
+                case 2:
+                    if(ke > pareja1){
+                        pareja2 = pareja1;
+                        pareja1 = ke;
+                    }   break;
+                case 3:
+                    if(ke > trio)
+                        trio = ke;
+                    break;
+                case 4:
+                    if(ke > poker)
+                        poker = ke;
+                    break;
+                default:
+                    break;
             }
         }
         

@@ -24,14 +24,19 @@ public class Main {
 	private int numCartas;
 	private static OutputStream outFile = null;
 	private static InputStream inFile = null;
-
+        private static boolean gui;
 	
         private static void parseArgs(String[] args) throws FileNotFoundException {
 		ej = Integer.parseInt(args[0]);
                 String aux = args[1];
                 inFile = new FileInputStream(new File("D:\\GitHub\\Poker\\Poker\\resources\\entrada.txt"));
-		outFile = new FileOutputStream(new File(args[2])); 
-		
+		outFile = new FileOutputStream(new File(args[2]));
+		if(args[3] != null){
+                    gui = true;
+                }
+                else{
+                    gui = false;
+                }
 	}
         
         private static void run() throws Exception {
@@ -120,7 +125,7 @@ public class Main {
 			break;
 		case 4:
                         while(inFile.available() != 0){
-
+                            
                         }
                         jugador = "";mesa = "";
 			break;
