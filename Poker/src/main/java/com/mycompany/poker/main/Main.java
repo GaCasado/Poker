@@ -79,7 +79,7 @@ public class Main {
 		case 3:
                         ArrayList<String> cartasJugador = new ArrayList<>();
                         String manJug;
-                        num = 7;
+                        num = 5;
                         ComparadorSoluciones comp = new ComparadorSoluciones();
                     	while(inFile.available() != 0){
                             char ch = (char) inFile.read();
@@ -93,19 +93,19 @@ public class Main {
                                 manJug += (char) inFile.read();
                                 manJug += (char) inFile.read();
                                 manJug += (char) inFile.read();
-                                System.out.println(manJug);
                                 cartasJugador.add(manJug);
                                 inFile.skip(1); // Salta el punto y coma
                             }
                             for(int i = 0; i < 10; i++){//Leo la mesa
                                  mesa += (char) inFile.read();
                             }
-                            System.out.println(mesa);
+                            
                             for(int i = 0; i< numJugadores; i++){
+                                
                                 Mano mano = new Mano(cartasJugador.get(i), mesa, num);
                                 Solucion aux = mano.getSolucion();
                                 Integer numJ = i;
-                                soluciones.put(aux, numJ);
+                                soluciones.put(aux, numJ + 1);
                             }      
                             //comparar y ordenar a los jugadores para escribirlos despues
                             soluciones.entrySet().forEach(r -> {

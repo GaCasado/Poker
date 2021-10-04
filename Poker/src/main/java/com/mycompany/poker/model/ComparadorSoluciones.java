@@ -14,7 +14,7 @@ public class ComparadorSoluciones {
         if(sol2 == null)
             return sol1;
         if(sol1.getJugada() > sol2.getJugada())
-            return sol1;
+            return sol2;
         else if(sol1.getJugada() == sol2.getJugada()){
             switch(sol1.getJugada()){
                 case 1:
@@ -101,7 +101,7 @@ public class ComparadorSoluciones {
             return sol1;
         }
         else
-            return sol2;
+            return sol1;
     }
     /*
         1. Escalera real de color (cartas 10, J, Q, K y A del mismo palo)
@@ -164,7 +164,7 @@ public class ComparadorSoluciones {
             return CartaAlta(sol1, sol2);
         }
         else
-             return(sol1.getTipo() >= sol2.getTipo());
+             return(sol1.getTipo() < sol2.getTipo());
     }
     private boolean CartaAlta(Solucion sol1, Solucion sol2){
         for(int i = 8; i >= 0; i -= 2){
