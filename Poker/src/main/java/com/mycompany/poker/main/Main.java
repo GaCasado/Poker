@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import com.mycompany.poker.model.Mano;
 import com.mycompany.poker.model.ComparadorSoluciones;
 import com.mycompany.poker.model.Solucion;
+import com.mycompany.poker.view.pantalla;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
@@ -185,7 +186,12 @@ public class Main {
 	public static void main(String args[]) {
 		try {			
 			parseArgs(args);
-                        run();
+                        if(!gui)
+                            run();
+                        else{
+                            pantalla a = new pantalla();
+                            a.setVisible(true);
+                        }
 		} catch (Exception e) {
 			System.err.println("Something went wrong ...");
 			System.err.println();

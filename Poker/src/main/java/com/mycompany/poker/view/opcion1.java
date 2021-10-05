@@ -35,7 +35,7 @@ public class opcion1 extends javax.swing.JFrame {
         mostrarImagen(this.carta3,"src/PNG-cards.1.3"+mesa.charAt(0)+"of"+mesa.charAt(1));
         mostrarImagen(this.carta4,"src/PNG-cards.1.3"+mesa.charAt(2)+"of"+mesa.charAt(3));
         mostrarImagen(this.carta5,"src/PNG-cards.1.3"+mesa.charAt(4)+"of"+mesa.charAt(5));
-        jugadas.setText(sol.getMano());
+        
         jugadas.setText(sol.toString());
         jugadas.setText(sol.getDraws());
         

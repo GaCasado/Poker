@@ -5,6 +5,7 @@
 package com.mycompany.poker.view;
 
 import com.mycompany.poker.model.Solucion;
+import static com.mycompany.poker.view.opcion1.mostrarImagen;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.TreeMap;
@@ -18,8 +19,40 @@ public class opcion3 extends javax.swing.JFrame {
     /**
      * Creates new form opcion3
      */
-    public opcion3(ArrayList<String> cartasJugadores,String mesa, TreeMap<Solucion, Integer> soluciones) {
+    public opcion3(ArrayList<String> cartasJugadores,String mesa, String soluciones) {
         initComponents();
+        String auxiliar = "";
+        for(int i = 0;i< cartasJugadores.size();i++){
+            auxiliar += "Jugador "+ i+1 + " " + cartasJugadores.get(i) + "\n";
+        }
+        cartasj.setText(auxiliar);
+            for(int i = 0; i < mesa.length()/2;i++){
+                
+                muestra(i,"src/PNG-cards.1.3"+mesa.charAt(i*2)+"of"+mesa.charAt(i*2+1));
+            }
+            jugadas.setText(soluciones);
+        
+    }
+    private void muestra(int i,String ruta){
+        
+        switch(i){
+            case 1:
+                mostrarImagen(carta1m,ruta);
+                break;
+            case 2:
+                mostrarImagen(carta2m,ruta);
+                break;
+            case 3:
+                mostrarImagen(carta3m,ruta);
+                break;    
+            case 4:
+                mostrarImagen(carta4m,ruta);
+                break;
+            case 5:
+                mostrarImagen(carta5m,ruta);
+                break;    
+            
+        }
     }
 
     /**
@@ -31,17 +64,72 @@ public class opcion3 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        cartasj = new javax.swing.JLabel();
+        jugadas = new javax.swing.JLabel();
+        carta1m = new javax.swing.JLabel();
+        carta2m = new javax.swing.JLabel();
+        carta3m = new javax.swing.JLabel();
+        carta4m = new javax.swing.JLabel();
+        carta5m = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        cartasj.setText("cartasj");
+
+        jugadas.setText("soluciones");
+
+        carta1m.setText("carta1m");
+
+        carta2m.setText("carta2m");
+
+        carta3m.setText("carta3m");
+
+        carta4m.setText("carta4m");
+
+        carta5m.setText("carta5m");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(jugadas, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(82, 82, 82)
+                                .addComponent(cartasj, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(51, 51, 51)
+                                .addComponent(carta1m)
+                                .addGap(41, 41, 41)
+                                .addComponent(carta2m)
+                                .addGap(31, 31, 31)
+                                .addComponent(carta3m)
+                                .addGap(38, 38, 38)
+                                .addComponent(carta4m)))
+                        .addGap(7, 7, 7)
+                        .addComponent(carta5m)))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jugadas, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(carta1m, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(carta2m, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(carta3m, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(carta4m, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(carta5m, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addComponent(cartasj, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -49,5 +137,12 @@ public class opcion3 extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel carta1m;
+    private javax.swing.JLabel carta2m;
+    private javax.swing.JLabel carta3m;
+    private javax.swing.JLabel carta4m;
+    private javax.swing.JLabel carta5m;
+    private javax.swing.JLabel cartasj;
+    private javax.swing.JLabel jugadas;
     // End of variables declaration//GEN-END:variables
 }

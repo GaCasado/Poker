@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -164,7 +165,7 @@ public class pantalla2 extends javax.swing.JPanel {
     }//GEN-LAST:event_botonop2ActionPerformed
 
     private void botonop3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonop3ActionPerformed
-        
+        String solu = "";
         String manJug = "", mesa = "";int numJugadores = 0; ArrayList<String> cartasJugador = new ArrayList<>();
         BufferedReader reader = null;TreeMap<Solucion, Integer> soluciones = new TreeMap<>();
         ComparadorSoluciones comp = new ComparadorSoluciones();
@@ -196,13 +197,14 @@ public class pantalla2 extends javax.swing.JPanel {
                                 soluciones.put(aux, numJ + 1);
                             }      
                             //comparar y ordenar a los jugadores para escribirlos despues
-                            /*
-                            soluciones.entrySet().forEach(r -> {
+                            
+                            for( Map.Entry<Solucion, Integer>  r: soluciones.entrySet()){
                                 Solucion aux = r.getKey();
                                 Integer numJ = r.getValue();
-                                
-                            });*/
-                opcion3 a = new opcion3(cartasJugador, mesa, soluciones);
+                                solu += " J" + numJ + " "+ aux.toString() + "\n";
+                            }
+                            
+                opcion3 a = new opcion3(cartasJugador, mesa, solu);
                 a.setVisible(true);
                 this.setVisible(false);
                 
@@ -214,60 +216,7 @@ public class pantalla2 extends javax.swing.JPanel {
     }//GEN-LAST:event_botonop3ActionPerformed
 
     private void botonop4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonop4ActionPerformed
-        // TODO add your handling code here:
-        /*
-        reader = new BufferedReader(new InputStreamReader(inFile));String cJ = "";Mano mano;  Solucion aux = null;
-                        ComparadorSoluciones cmp = new ComparadorSoluciones();
-                        while(reader.ready()){
-                            String linea = reader.readLine();
-                            jugador = linea.substring(0, 8);
-                            char ch = linea.charAt(9);
-                            num = Character.getNumericValue(ch); // Lee el numero de cartas del river                           
-                            mesa = linea.substring(11, ((num*2) + 11));
-                            
-                            
-                            cJ += jugador.charAt(0);cJ += jugador.charAt(1);
-                            cJ += jugador.charAt(2);cJ += jugador.charAt(3);
-                            mano = new Mano(cJ, mesa,num, true);
-                            aux = mano.getSolucion();                         
-                            cJ = "";
-                            
-                            cJ += jugador.charAt(2);cJ += jugador.charAt(3);
-                            cJ += jugador.charAt(4);cJ += jugador.charAt(5);
-                            mano = new Mano(cJ, mesa,num, true);
-                            aux = cmp.compara(mano.getSolucion(),aux);                          
-                            cJ = "";
-                            
-                            cJ += jugador.charAt(4);cJ += jugador.charAt(5);
-                            cJ += jugador.charAt(6);cJ += jugador.charAt(7);
-                            mano = new Mano(cJ, mesa,num, true);
-                            aux = cmp.compara(mano.getSolucion(),aux);                          
-                            cJ = "";
-                            
-                            cJ += jugador.charAt(0);cJ += jugador.charAt(1);
-                            cJ += jugador.charAt(4);cJ += jugador.charAt(5);
-                            mano = new Mano(cJ, mesa,num, true);
-                            aux = cmp.compara(mano.getSolucion(),aux);                          
-                            cJ = "";
-                            
-                            cJ += jugador.charAt(0);cJ += jugador.charAt(1);
-                            cJ += jugador.charAt(6);cJ += jugador.charAt(7);
-                            mano = new Mano(cJ, mesa,num, true);
-                            aux = cmp.compara(mano.getSolucion(),aux);                          
-                            cJ = "";
-                            
-                            cJ += jugador.charAt(2);cJ += jugador.charAt(3);
-                            cJ += jugador.charAt(6);cJ += jugador.charAt(7);
-                            mano = new Mano(cJ, mesa,num, true);
-                            aux = cmp.compara(mano.getSolucion(),aux);                       
-                            cJ = "";
-                                                                                 
-                        System.out.println(linea);
-                        System.out.println( " - Best Hand: " + aux.toString());
-                        System.out.println( aux.getDraws());
-                        p.println( "Best Hand: " + aux.toString());
-                        p.println( aux.getDraws());
-        */
+
             String jugador = "", mesa = "", cJ = "";int num = 0;Mano mano; Solucion aux;
             ComparadorSoluciones cmp = new ComparadorSoluciones();
         BufferedReader reader = null;
