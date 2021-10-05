@@ -17,7 +17,7 @@ public class Mano {
     private Solucion solucion = null;
     
     
-    public Mano(String jugador, String mesa, int nC){//nC de entrada es el número de cartas que hay en la mesa
+    public Mano(String jugador, String mesa, int nC, boolean omaha){//nC de entrada es el número de cartas que hay en la mesa
         solucion(jugador , mesa , nC);
     }
     private void solucion(String jugador, String mesa, int nC){

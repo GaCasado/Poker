@@ -54,7 +54,7 @@ public class Main {
                                 else
                                     mesa += (char) inFile.read();
                             }
-                            Mano mano = new Mano(jugador, mesa,3);
+                            Mano mano = new Mano(jugador, mesa,3, false);
                             
                             System.out.println( "Best Hand: " + mano.getSolucion().toString());
                             System.out.println( mano.getSolucion().getDraws());
@@ -72,7 +72,7 @@ public class Main {
                             char ch = linea.charAt(5);
                             num = Character.getNumericValue(ch); // Lee el numero de cartas del river                           
                             mesa = linea.substring(7, ((num*2) + 7));
-                            Mano mano = new Mano(jugador, mesa,num);                                                      
+                            Mano mano = new Mano(jugador, mesa,num, false);                                                      
                         System.out.println(linea);
                         System.out.println( " - Best Hand: " + mano.getSolucion().toString());
                         System.out.println( mano.getSolucion().getDraws());
@@ -108,7 +108,7 @@ public class Main {
                             
                             for(int i = 0; i< numJugadores; i++){
                                 
-                                Mano mano = new Mano(cartasJugador.get(i), mesa, num);
+                                Mano mano = new Mano(cartasJugador.get(i), mesa, num, true);
                                 Solucion aux = mano.getSolucion();
                                 Integer numJ = i;
                                 soluciones.put(aux, numJ + 1);
@@ -138,37 +138,37 @@ public class Main {
                             
                             cJ += jugador.charAt(0);cJ += jugador.charAt(1);
                             cJ += jugador.charAt(2);cJ += jugador.charAt(3);
-                            mano = new Mano(cJ, mesa,num);
+                            mano = new Mano(cJ, mesa,num, true);
                             aux = mano.getSolucion();                         
                             cJ = "";
                             
                             cJ += jugador.charAt(2);cJ += jugador.charAt(3);
                             cJ += jugador.charAt(4);cJ += jugador.charAt(5);
-                            mano = new Mano(cJ, mesa,num);
+                            mano = new Mano(cJ, mesa,num, true);
                             aux = cmp.compara(mano.getSolucion(),aux);                          
                             cJ = "";
                             
                             cJ += jugador.charAt(4);cJ += jugador.charAt(5);
                             cJ += jugador.charAt(6);cJ += jugador.charAt(7);
-                            mano = new Mano(cJ, mesa,num);
+                            mano = new Mano(cJ, mesa,num, true);
                             aux = cmp.compara(mano.getSolucion(),aux);                          
                             cJ = "";
                             
                             cJ += jugador.charAt(0);cJ += jugador.charAt(1);
                             cJ += jugador.charAt(4);cJ += jugador.charAt(5);
-                            mano = new Mano(cJ, mesa,num);
+                            mano = new Mano(cJ, mesa,num, true);
                             aux = cmp.compara(mano.getSolucion(),aux);                          
                             cJ = "";
                             
                             cJ += jugador.charAt(0);cJ += jugador.charAt(1);
                             cJ += jugador.charAt(6);cJ += jugador.charAt(7);
-                            mano = new Mano(cJ, mesa,num);
+                            mano = new Mano(cJ, mesa,num, true);
                             aux = cmp.compara(mano.getSolucion(),aux);                          
                             cJ = "";
                             
                             cJ += jugador.charAt(2);cJ += jugador.charAt(3);
                             cJ += jugador.charAt(6);cJ += jugador.charAt(7);
-                            mano = new Mano(cJ, mesa,num);
+                            mano = new Mano(cJ, mesa,num, true);
                             aux = cmp.compara(mano.getSolucion(),aux);                       
                             cJ = "";
                                                                                  
