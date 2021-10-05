@@ -24,11 +24,8 @@ public class pantalla2 extends javax.swing.JPanel {
     String fichero;
     
     public pantalla2(String fichero) {
-        
-        
         initComponents();
         this.fichero = fichero;
-        setVisible(true);
     }
 
 
