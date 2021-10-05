@@ -191,12 +191,12 @@ public class Pan2 extends javax.swing.JFrame {
                                 manJug = "";//4 11 18
                                 manJug = linea.substring(ini +(i * 7), fin + (i * 7) -1);
                                 cartasJugador.add(manJug);
-                                System.out.println(manJug);
+                                //System.out.println(manJug);
                             }
                             
                             mesa = linea.substring(2+(numJugadores * 7), 12 + (numJugadores * 7));
                             
-                            System.out.println(mesa);
+                            //System.out.println(mesa);
                             for(int i = 0; i< numJugadores; i++){
                                 
                                 Mano mano = new Mano(cartasJugador.get(i), mesa, 5, false);

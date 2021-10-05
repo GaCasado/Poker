@@ -12,28 +12,45 @@ public class opcion4 extends javax.swing.JFrame {
         initComponents();
         Character uno = null, dos = null;
         uno = jugador.charAt(0);dos =jugador.charAt(1);
-         mostrarImagen(this.carta1j,uno+dos+ ".png");
+         mostrarImagen(this.carta1j,uno.toString()+dos.toString()+".png");
          uno = jugador.charAt(2);dos =jugador.charAt(3);
-         mostrarImagen(this.carta2j,uno+dos+ ".png");
+         mostrarImagen(this.carta2j,uno.toString()+dos.toString()+".png");
          uno = jugador.charAt(4);dos =jugador.charAt(5);
-         mostrarImagen(this.carta3j,uno+dos+ ".png");
+         mostrarImagen(this.carta3j,uno.toString()+dos.toString()+".png");
          uno = jugador.charAt(6);dos =jugador.charAt(7);
-         mostrarImagen(this.carta4j,uno+dos+ ".png");
-         uno = mesa.charAt(0);dos =mesa.charAt(1);
-         mostrarImagen(this.carta1m,uno+dos+ ".png");
-         uno = mesa.charAt(2);dos =mesa.charAt(3);
-         mostrarImagen(this.carta2m,uno+dos+ ".png");
-         uno = mesa.charAt(4);dos =mesa.charAt(5);
-         mostrarImagen(this.carta3m,uno+dos+ ".png");
-         uno = mesa.charAt(6);dos =mesa.charAt(7);
-         mostrarImagen(this.carta4m,uno+dos+ ".png");
-         uno = mesa.charAt(8);dos =mesa.charAt(9);
-         mostrarImagen(this.carta5m,uno+dos+ ".png");
+         mostrarImagen(this.carta4j,uno.toString()+dos.toString()+".png");
+         
+         for(int i = 0; i < mesa.length()/2;i++){
+                uno = mesa.charAt(i*2);dos =mesa.charAt(i*2+1);
+                muestra(i+1,uno.toString()+dos.toString()+".png");
+            }
          String aux = "";
          aux = sol.toString() + " " + sol.getDraws();
          jugadas.setText(aux);
     }
 
+    private void muestra(int i,String ruta){
+        
+        switch(i){
+            case 1:
+                mostrarImagen(carta1m,ruta);
+                break;
+            case 2:
+                mostrarImagen(carta2m,ruta);
+                break;
+            case 3:
+                mostrarImagen(carta3m,ruta);
+                break;    
+            case 4:
+                mostrarImagen(carta4m,ruta);
+                break;
+            case 5:
+                mostrarImagen(carta5m,ruta);
+                break;    
+            
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -78,49 +95,55 @@ public class opcion4 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(carta1m)
-                        .addGap(18, 18, 18)
-                        .addComponent(carta2m)
-                        .addGap(18, 18, 18)
-                        .addComponent(carta3m)
-                        .addGap(18, 18, 18)
-                        .addComponent(carta4m)
-                        .addGap(18, 18, 18)
-                        .addComponent(carta5m))
+                        .addGap(59, 59, 59)
+                        .addComponent(carta1j, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(carta1j)
-                        .addGap(18, 18, 18)
-                        .addComponent(carta2j)
-                        .addGap(18, 18, 18)
-                        .addComponent(carta3j)
-                        .addGap(18, 18, 18)
-                        .addComponent(carta4j))
+                        .addGap(46, 46, 46)
+                        .addComponent(carta1m, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jugadas, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(82, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addComponent(carta2m, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(carta3m, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(carta4m, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(carta2j, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80)
+                        .addComponent(carta3j, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(carta5m, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(carta4j, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(61, 61, 61))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jugadas, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jugadas, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addComponent(jugadas, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(carta5m, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(carta4m, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(carta3m, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(carta2m, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(carta1m, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(carta1m, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(carta2m)
-                    .addComponent(carta3m)
-                    .addComponent(carta4m)
-                    .addComponent(carta5m))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(carta1j, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(carta2j)
-                    .addComponent(carta3j)
-                    .addComponent(carta4j, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(59, 59, 59))
+                    .addComponent(carta2j, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(carta1j, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(carta3j, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(carta4j, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51))
         );
 
         pack();
