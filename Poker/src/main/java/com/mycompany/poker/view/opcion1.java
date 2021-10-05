@@ -27,7 +27,10 @@ public class opcion1 extends javax.swing.JFrame {
      */
     public opcion1(String jugador, String mesa, Solucion sol) {
         initComponents();
-        mostrarImagen(this.carta1,"images/"+jugador.charAt(0)+jugador.charAt(1) +".png");
+        String ruta = "";
+        ruta ="images/"+jugador.charAt(0)+jugador.charAt(1) +".png";
+        System.out.println(ruta);
+        mostrarImagen(this.carta1,ruta);
         mostrarImagen(this.carta2,"images/"+jugador.charAt(2)+jugador.charAt(3) +".png");
         mostrarImagen(this.carta3,"images/"+mesa.charAt(0)+mesa.charAt(1) +".png");
         mostrarImagen(this.carta4,"images/"+mesa.charAt(2)+mesa.charAt(3) +".png");
