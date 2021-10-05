@@ -22,15 +22,18 @@ public class opcion2 extends javax.swing.JFrame {
     public opcion2(String jugador, String mesa, Solucion sol) {
        
         initComponents();
-        
-            mostrarImagen(this.carta1j,"src/PNG-cards.1.3"+jugador.charAt(0)+"of"+jugador.charAt(1));
-            mostrarImagen(this.carta2j,"src/PNG-cards.1.3"+jugador.charAt(2)+"of"+jugador.charAt(3));
+        Character uno = null, dos = null;
+        uno = jugador.charAt(0);dos =jugador.charAt(1);
+            mostrarImagen(this.carta1j,uno+dos+ ".png");
+            uno = jugador.charAt(2);dos =jugador.charAt(3);
+            mostrarImagen(this.carta2j,uno+dos+ ".png");
             for(int i = 0; i < mesa.length()/2;i++){
-                
-                muestra(i,"images/"+mesa.charAt(i*2)+mesa.charAt(i*2+1) +".png");
+                uno = jugador.charAt(i*2);dos =jugador.charAt(i*2+1);
+                muestra(i,uno+dos+ ".png");
             }
-            jugadas.setText(sol.toString());
-            jugadas.setText(sol.getDraws());
+            String aux = "";
+            aux = sol.toString() + " " + sol.getDraws();
+            jugadas.setText(aux);
         
     }
     private void muestra(int i,String ruta){

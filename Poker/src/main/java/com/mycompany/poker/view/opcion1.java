@@ -20,8 +20,6 @@ public class opcion1 extends javax.swing.JFrame {
     
     public static void mostrarImagen(JLabel lbl, String ruta){
         ImageIcon ico = new ImageIcon(ruta);
-        ico.getImage().flush();
-        System.out.println(ruta);
         lbl.setIcon(ico);
     }
     
@@ -39,7 +37,7 @@ public class opcion1 extends javax.swing.JFrame {
         mostrarImagen(this.carta4,uno.toString()+dos.toString() +".png");
         uno = mesa.charAt(4);dos =mesa.charAt(5);
         mostrarImagen(this.carta5,uno.toString()+dos.toString() +".png");
-        aux = sol.toString() + "\n" + sol.getDraws();
+        aux = sol.toString() + " " + sol.getDraws();
         jugadas.setText(aux);
         
     }

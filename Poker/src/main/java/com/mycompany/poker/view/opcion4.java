@@ -10,18 +10,28 @@ import static com.mycompany.poker.view.opcion1.mostrarImagen;
 public class opcion4 extends javax.swing.JFrame {
     public opcion4(String jugador, String mesa, Solucion sol) {
         initComponents();
-         mostrarImagen(this.carta1j,"images/"+jugador.charAt(0)+jugador.charAt(1)+".png");
-         mostrarImagen(this.carta2j,"images/"+jugador.charAt(2)+jugador.charAt(3)+".png");
-         mostrarImagen(this.carta3j,"images/"+jugador.charAt(4)+jugador.charAt(5)+".png");
-         mostrarImagen(this.carta4j,"images/"+jugador.charAt(6)+jugador.charAt(7)+".png");
-         mostrarImagen(this.carta1m,"images/"+mesa.charAt(0)+mesa.charAt(1)+".png");
-         mostrarImagen(this.carta2m,"images/"+mesa.charAt(2)+mesa.charAt(3)+".png");
-         mostrarImagen(this.carta3m,"images/"+mesa.charAt(4)+mesa.charAt(5)+".png");
-         mostrarImagen(this.carta4m,"images/"+mesa.charAt(6)+mesa.charAt(7)+".png");
-         mostrarImagen(this.carta5m,"images/"+mesa.charAt(8)+mesa.charAt(9)+".png");
-         
-         jugadas.setText(sol.toString());
-         jugadas.setText(sol.getDraws());
+        Character uno = null, dos = null;
+        uno = jugador.charAt(0);dos =jugador.charAt(1);
+         mostrarImagen(this.carta1j,uno+dos+ ".png");
+         uno = jugador.charAt(2);dos =jugador.charAt(3);
+         mostrarImagen(this.carta2j,uno+dos+ ".png");
+         uno = jugador.charAt(4);dos =jugador.charAt(5);
+         mostrarImagen(this.carta3j,uno+dos+ ".png");
+         uno = jugador.charAt(6);dos =jugador.charAt(7);
+         mostrarImagen(this.carta4j,uno+dos+ ".png");
+         uno = mesa.charAt(0);dos =mesa.charAt(1);
+         mostrarImagen(this.carta1m,uno+dos+ ".png");
+         uno = mesa.charAt(2);dos =mesa.charAt(3);
+         mostrarImagen(this.carta2m,uno+dos+ ".png");
+         uno = mesa.charAt(4);dos =mesa.charAt(5);
+         mostrarImagen(this.carta3m,uno+dos+ ".png");
+         uno = mesa.charAt(6);dos =mesa.charAt(7);
+         mostrarImagen(this.carta4m,uno+dos+ ".png");
+         uno = mesa.charAt(8);dos =mesa.charAt(9);
+         mostrarImagen(this.carta5m,uno+dos+ ".png");
+         String aux = "";
+         aux = sol.toString() + " " + sol.getDraws();
+         jugadas.setText(aux);
     }
 
     @SuppressWarnings("unchecked")

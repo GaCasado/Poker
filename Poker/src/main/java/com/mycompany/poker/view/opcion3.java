@@ -21,13 +21,14 @@ public class opcion3 extends javax.swing.JFrame {
      */
     public opcion3(ArrayList<String> cartasJugadores,String mesa, String soluciones) {
         initComponents();
-        String auxiliar = "";
+        String auxiliar = "";Character uno = null, dos = null;
         for(int i = 0;i< cartasJugadores.size();i++){
+            
             auxiliar += "Jugador "+ i+1 + " " + cartasJugadores.get(i) + "\n";
         }
         cartasj.setText(auxiliar);
             for(int i = 0; i < mesa.length()/2;i++){
-                
+                uno = mesa.charAt(i*2);dos =mesa.charAt(i*2+1);
                 muestra(i,"images/"+mesa.charAt(i*2)+mesa.charAt(i*2+1) +".png");
             }
             jugadas.setText(soluciones);
