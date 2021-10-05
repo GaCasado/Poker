@@ -4,19 +4,15 @@
  */
 package com.mycompany.poker.model;
 
-//import com.mycompany.poker.model.Carta;
+
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.ArrayList;
-//import java.lang.String;
 import java.util.List;
 
 public class Mano {
-    //private final List<String> jugadas;
-    //private final int nC;
     private Solucion solucion = null;
-    
-    
+
     public Mano(String jugador, String mesa, int nC, boolean omaha){//nC de entrada es el número de cartas que hay en la mesa
         solucion(jugador , mesa , nC, omaha);
     }
@@ -64,7 +60,7 @@ public class Mano {
     private Solucion buscaJugadas(ArrayList<Carta> cartas){
         String manoOrd = "";
         Solucion solActual = null;
-        Map<Integer,ArrayList<Carta>> repeticiones = new TreeMap<>();//estoy cambiando el mapa
+        Map<Integer,ArrayList<Carta>> repeticiones = new TreeMap<>();
         List<Carta> lista = new ArrayList<>();
         int colH = 0, colD = 0, colC = 0, colS = 0;
         int pareja1 = -1, pareja2 = -1, trio = -1, poker = -1;
@@ -151,20 +147,15 @@ public class Mano {
                 drawSg = "gutshot " + manoOrd;
             } 
             else if(lista.get(3).getNum() - lista.get(0).getNum() == 3 || lista.get(4).getNum() - lista.get(1).getNum() == 3){//esto lo tengo que terminar               
-                drawSo = "open-ended " + manoOrd;               
+                drawSo = "open-ended " + manoOrd;
             }
         }
         else if (lista.size() == 4){
-            // si la primera y la ultima no tienen repes en el map es que hay hueco en medio
-            // si una de esas tiene es proyecto del normal
-            //hay proyecto repeticiones.get(lista.get(0).getNum()).size() == 1 && repeticiones.get(lista.get(3).getNum()).size() == 1
-            //System.out.println(lista.get(3).getNum() -  lista.get(0).getNum());
-            if(lista.get(3).getNum() -  lista.get(0).getNum()== 5){
+            if(lista.get(3).getNum() -  lista.get(0).getNum()== 4){
                 
                     drawSg = "gutshot " + manoOrd;
             }
-            else{
-                //open-ended
+            else if(lista.get(2).getNum() - lista.get(0).getNum() == 3 || lista.get(3).getNum() - lista.get(1).getNum() == 3){//esto lo tengo que terminar               
                 drawSo = "open-ended " + manoOrd;
             }
         }
@@ -248,46 +239,7 @@ public class Mano {
     public Solucion getSolucion(){
         return solucion;
     }
-    /*
-    private String parseaNumero(int entrada){
-        String salida;Integer aux = entrada;
-        switch(entrada){
-            case 14:
-                salida = "A";
-            break;
-            case 13:
-                salida = "K";
-            break;
-            case 12:
-                salida = "Q";
-            break;
-            case 11:
-                salida = "J";
-            break;
-            case 10:
-                salida = "T";
-            break;
-            default:
-                salida = aux.toString();
-            break;
-        }
-        return salida;
-    }*/
-    /*
-    public String getJugada(){
-        return solucion;
-    }*/
-    /*
-    public List getProyectos(){
-        ArrayList<String> proye = new ArrayList<>();
-        if(drawS != null)
-            proye.add(drawS);
-        else if(drawF != null)
-            proye.add(drawF);
-        else
-            return null;
-        return proye;
-    }*/
+    
     private void caso4Cartas(ArrayList<Carta> cartas){
         ArrayList<Carta> cartas5 = new ArrayList<>(); Solucion solActual = null; ComparadorSoluciones comp = new ComparadorSoluciones();
         cartas5.add(cartas.get(0));
