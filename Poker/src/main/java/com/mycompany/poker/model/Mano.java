@@ -31,6 +31,7 @@ public class Mano {
             cartas.add(new Carta(mesa.charAt(i*2), mesa.charAt(i*2 + 1), false));
         }
         
+        
         switch (nC) {
             case 3:
                 solActual = buscaJugadas(cartas);

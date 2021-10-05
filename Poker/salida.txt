@@ -1,2 +1,4 @@
-Best Hand: Poker of 2 (2h2d2c2s5h )
-
+ J3 Straigth (Straight 6c7c8c9hTh)
+ J1 Pair of A (9hThKsAhAc )
+ J4 Pair of K (6c9hThKcKs )
+ J2 Pair of J (9hThJsJhKs )

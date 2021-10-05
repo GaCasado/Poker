@@ -87,28 +87,24 @@ public class Main {
                         String manJug;
                         num = 5;
                         ComparadorSoluciones comp = new ComparadorSoluciones();
-                    	while(inFile.available() != 0){
-                            char ch = (char) inFile.read();
-                            numJugadores = Character.getNumericValue(ch); //lee numero de jugadores
-                            
-                            inFile.skip(1); // Salta el punto y coma
-                            for(int i =0; i< numJugadores;i++){//lee todas las manos de los jugadores
-                                manJug = "";
-                                inFile.skip(2); // Salta el nombre del jugador
-                                manJug += (char) inFile.read();
-                                manJug += (char) inFile.read();
-                                manJug += (char) inFile.read();
-                                manJug += (char) inFile.read();
+                        reader = new BufferedReader(new InputStreamReader(inFile));
+                        while(reader.ready()){
+                            String linea = reader.readLine();
+                            numJugadores = Character.getNumericValue(linea.charAt(0));
+                            int ini = 4, fin = 9;
+                            for(int i =0; i< numJugadores;i++){
+                                manJug = "";//4 11 18
+                                manJug = linea.substring(ini +(i * 7), fin + (i * 7) -1);
                                 cartasJugador.add(manJug);
-                                inFile.skip(1); // Salta el punto y coma
-                            }
-                            for(int i = 0; i < 10; i++){//Leo la mesa
-                                 mesa += (char) inFile.read();
+                                System.out.println(manJug);
                             }
                             
+                            mesa = linea.substring(2+(numJugadores * 7), 12 + (numJugadores * 7));
+                            
+                            System.out.println(mesa);
                             for(int i = 0; i< numJugadores; i++){
                                 
-                                Mano mano = new Mano(cartasJugador.get(i), mesa, num, true);
+                                Mano mano = new Mano(cartasJugador.get(i), mesa, num, false);
                                 Solucion aux = mano.getSolucion();
                                 Integer numJ = i;
                                 soluciones.put(aux, numJ + 1);
@@ -121,7 +117,8 @@ public class Main {
                                 p.println( " J" + numJ + " "+ aux.toString());
                             });
                             
-                        jugador = "";mesa = "";cartasJugador.clear();                            
+                        jugador = "";mesa = "";cartasJugador.clear(); 
+                            
                         }
                         
 			break;
