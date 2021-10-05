@@ -164,42 +164,7 @@ public class pantalla2 extends javax.swing.JPanel {
     }//GEN-LAST:event_botonop2ActionPerformed
 
     private void botonop3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonop3ActionPerformed
-        /*
-        ArrayList<String> cartasJugador = new ArrayList<>();
-                        String manJug;
-                        num = 5;
-                        ComparadorSoluciones comp = new ComparadorSoluciones();
-                        reader = new BufferedReader(new InputStreamReader(inFile));
-                        while(reader.ready()){
-                            String linea = reader.readLine();
-                            numJugadores = Character.getNumericValue(linea.charAt(0));
-                            int ini = 4, fin = 9;
-                            for(int i =0; i< numJugadores;i++){
-                                manJug = "";//4 11 18
-                                manJug = linea.substring(ini +(i * 7), fin + (i * 7) -1);
-                                cartasJugador.add(manJug);
-                                System.out.println(manJug);
-                            }
-                            
-                            mesa = linea.substring(2+(numJugadores * 7), 12 + (numJugadores * 7));
-                            
-                            System.out.println(mesa);
-                            for(int i = 0; i< numJugadores; i++){
-                                
-                                Mano mano = new Mano(cartasJugador.get(i), mesa, num, false);
-                                Solucion aux = mano.getSolucion();
-                                Integer numJ = i;
-                                soluciones.put(aux, numJ + 1);
-                            }      
-                            //comparar y ordenar a los jugadores para escribirlos despues
-                            soluciones.entrySet().forEach(r -> {
-                                Solucion aux = r.getKey();
-                                Integer numJ = r.getValue();
-                                System.out.println(" J" + numJ + " "+ aux.toString());
-                                p.println( " J" + numJ + " "+ aux.toString());
-                            });
-                            
-        */
+        
         String manJug = "", mesa = "";int numJugadores = 0; ArrayList<String> cartasJugador = new ArrayList<>();
         BufferedReader reader = null;TreeMap<Solucion, Integer> soluciones = new TreeMap<>();
         ComparadorSoluciones comp = new ComparadorSoluciones();
@@ -250,10 +215,120 @@ public class pantalla2 extends javax.swing.JPanel {
 
     private void botonop4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonop4ActionPerformed
         // TODO add your handling code here:
+        /*
+        reader = new BufferedReader(new InputStreamReader(inFile));String cJ = "";Mano mano;  Solucion aux = null;
+                        ComparadorSoluciones cmp = new ComparadorSoluciones();
+                        while(reader.ready()){
+                            String linea = reader.readLine();
+                            jugador = linea.substring(0, 8);
+                            char ch = linea.charAt(9);
+                            num = Character.getNumericValue(ch); // Lee el numero de cartas del river                           
+                            mesa = linea.substring(11, ((num*2) + 11));
+                            
+                            
+                            cJ += jugador.charAt(0);cJ += jugador.charAt(1);
+                            cJ += jugador.charAt(2);cJ += jugador.charAt(3);
+                            mano = new Mano(cJ, mesa,num, true);
+                            aux = mano.getSolucion();                         
+                            cJ = "";
+                            
+                            cJ += jugador.charAt(2);cJ += jugador.charAt(3);
+                            cJ += jugador.charAt(4);cJ += jugador.charAt(5);
+                            mano = new Mano(cJ, mesa,num, true);
+                            aux = cmp.compara(mano.getSolucion(),aux);                          
+                            cJ = "";
+                            
+                            cJ += jugador.charAt(4);cJ += jugador.charAt(5);
+                            cJ += jugador.charAt(6);cJ += jugador.charAt(7);
+                            mano = new Mano(cJ, mesa,num, true);
+                            aux = cmp.compara(mano.getSolucion(),aux);                          
+                            cJ = "";
+                            
+                            cJ += jugador.charAt(0);cJ += jugador.charAt(1);
+                            cJ += jugador.charAt(4);cJ += jugador.charAt(5);
+                            mano = new Mano(cJ, mesa,num, true);
+                            aux = cmp.compara(mano.getSolucion(),aux);                          
+                            cJ = "";
+                            
+                            cJ += jugador.charAt(0);cJ += jugador.charAt(1);
+                            cJ += jugador.charAt(6);cJ += jugador.charAt(7);
+                            mano = new Mano(cJ, mesa,num, true);
+                            aux = cmp.compara(mano.getSolucion(),aux);                          
+                            cJ = "";
+                            
+                            cJ += jugador.charAt(2);cJ += jugador.charAt(3);
+                            cJ += jugador.charAt(6);cJ += jugador.charAt(7);
+                            mano = new Mano(cJ, mesa,num, true);
+                            aux = cmp.compara(mano.getSolucion(),aux);                       
+                            cJ = "";
+                                                                                 
+                        System.out.println(linea);
+                        System.out.println( " - Best Hand: " + aux.toString());
+                        System.out.println( aux.getDraws());
+                        p.println( "Best Hand: " + aux.toString());
+                        p.println( aux.getDraws());
+        */
+            String jugador = "", mesa = "", cJ = "";int num = 0;Mano mano; Solucion aux;
+            ComparadorSoluciones cmp = new ComparadorSoluciones();
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(fichero))));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(pantalla2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            while(reader.ready()){
+                String linea = reader.readLine();
+                            jugador = linea.substring(0, 8);
+                            char ch = linea.charAt(9);
+                            num = Character.getNumericValue(ch); // Lee el numero de cartas del river                           
+                            mesa = linea.substring(11, ((num*2) + 11));
+                            
+                            
+                            cJ += jugador.charAt(0);cJ += jugador.charAt(1);
+                            cJ += jugador.charAt(2);cJ += jugador.charAt(3);
+                            mano = new Mano(cJ, mesa,num, true);
+                            aux = mano.getSolucion();                         
+                            cJ = "";
+                            
+                            cJ += jugador.charAt(2);cJ += jugador.charAt(3);
+                            cJ += jugador.charAt(4);cJ += jugador.charAt(5);
+                            mano = new Mano(cJ, mesa,num, true);
+                            aux = cmp.compara(mano.getSolucion(),aux);                          
+                            cJ = "";
+                            
+                            cJ += jugador.charAt(4);cJ += jugador.charAt(5);
+                            cJ += jugador.charAt(6);cJ += jugador.charAt(7);
+                            mano = new Mano(cJ, mesa,num, true);
+                            aux = cmp.compara(mano.getSolucion(),aux);                          
+                            cJ = "";
+                            
+                            cJ += jugador.charAt(0);cJ += jugador.charAt(1);
+                            cJ += jugador.charAt(4);cJ += jugador.charAt(5);
+                            mano = new Mano(cJ, mesa,num, true);
+                            aux = cmp.compara(mano.getSolucion(),aux);                          
+                            cJ = "";
+                            
+                            cJ += jugador.charAt(0);cJ += jugador.charAt(1);
+                            cJ += jugador.charAt(6);cJ += jugador.charAt(7);
+                            mano = new Mano(cJ, mesa,num, true);
+                            aux = cmp.compara(mano.getSolucion(),aux);                          
+                            cJ = "";
+                            
+                            cJ += jugador.charAt(2);cJ += jugador.charAt(3);
+                            cJ += jugador.charAt(6);cJ += jugador.charAt(7);
+                            mano = new Mano(cJ, mesa,num, true);
+                            aux = cmp.compara(mano.getSolucion(),aux);                       
+                            cJ = "";
+                                                                                 
+                        opcion4 a = new opcion4(jugador, mesa, aux);
+                    a.setVisible(true);
+                this.setVisible(false);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(pantalla2.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        opcion4 a = new opcion4(fichero);
-            a.setVisible(true);
-            this.setVisible(false);
     }//GEN-LAST:event_botonop4ActionPerformed
 
 
