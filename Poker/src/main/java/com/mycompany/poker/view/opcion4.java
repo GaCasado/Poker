@@ -5,6 +5,7 @@
 package com.mycompany.poker.view;
 
 import com.mycompany.poker.model.Solucion;
+import static com.mycompany.poker.view.opcion1.mostrarImagen;
 import java.io.InputStream;
 
 /**
@@ -18,6 +19,18 @@ public class opcion4 extends javax.swing.JFrame {
      */
     public opcion4(String jugador, String mesa, Solucion sol) {
         initComponents();
+         mostrarImagen(this.carta1j,"src/PNG-cards.1.3"+jugador.charAt(0)+"of"+jugador.charAt(1));
+         mostrarImagen(this.carta2j,"src/PNG-cards.1.3"+jugador.charAt(2)+"of"+jugador.charAt(3));
+         mostrarImagen(this.carta3j,"src/PNG-cards.1.3"+jugador.charAt(4)+"of"+jugador.charAt(5));
+         mostrarImagen(this.carta4j,"src/PNG-cards.1.3"+jugador.charAt(6)+"of"+jugador.charAt(7));
+         mostrarImagen(this.carta1m,"src/PNG-cards.1.3"+mesa.charAt(0)+"of"+mesa.charAt(1));
+         mostrarImagen(this.carta2m,"src/PNG-cards.1.3"+mesa.charAt(2)+"of"+mesa.charAt(3));
+         mostrarImagen(this.carta3m,"src/PNG-cards.1.3"+mesa.charAt(4)+"of"+mesa.charAt(5));
+         mostrarImagen(this.carta4m,"src/PNG-cards.1.3"+mesa.charAt(6)+"of"+mesa.charAt(7));
+         mostrarImagen(this.carta5m,"src/PNG-cards.1.3"+mesa.charAt(8)+"of"+mesa.charAt(9));
+         
+         jugadas.setText(sol.toString());
+         jugadas.setText(sol.getDraws());
     }
 
     /**

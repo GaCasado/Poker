@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import com.mycompany.poker.model.Mano;
 import com.mycompany.poker.model.ComparadorSoluciones;
 import com.mycompany.poker.model.Solucion;
-import com.mycompany.poker.view.pantalla;
+import com.mycompany.poker.view.Pantalla1;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
@@ -25,7 +25,7 @@ import java.util.TreeMap;
 public class Main {
 
 	private static int ej;
-	private int numCartas;
+	//private int numCartas;
         private static String _outFile = null;
         private static String _inFile = null;
 	private static OutputStream outFile = null;
@@ -35,7 +35,16 @@ public class Main {
         private static void parseArgs(String[] args) throws FileNotFoundException {
 		ej = Integer.parseInt(args[0]);
                 _inFile = args[1];
-                _outFile = args[2];		
+                _outFile = args[2];
+                try{
+                    if(args[3] != null)
+                        gui = true;
+                    else
+                        gui = false;
+                }
+                catch(Exception e){
+                    System.out.println(e.getMessage());
+                }
 	}
         
         private static void run() throws Exception {
@@ -189,7 +198,7 @@ public class Main {
                         if(!gui)
                             run();
                         else{
-                            pantalla a = new pantalla();
+                            Pantalla1 a = new Pantalla1();
                             a.setVisible(true);
                         }
 		} catch (Exception e) {
