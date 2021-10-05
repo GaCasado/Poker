@@ -4,7 +4,9 @@
  */
 package com.mycompany.poker.view;
 
+import com.mycompany.poker.model.ComparadorSoluciones;
 import com.mycompany.poker.model.Mano;
+import com.mycompany.poker.model.Solucion;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,6 +14,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -160,10 +164,88 @@ public class pantalla2 extends javax.swing.JPanel {
     }//GEN-LAST:event_botonop2ActionPerformed
 
     private void botonop3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonop3ActionPerformed
-        // TODO add your handling code here:
-        opcion3 a = new opcion3(fichero);
-            a.setVisible(true);
-            this.setVisible(false);
+        /*
+        ArrayList<String> cartasJugador = new ArrayList<>();
+                        String manJug;
+                        num = 5;
+                        ComparadorSoluciones comp = new ComparadorSoluciones();
+                        reader = new BufferedReader(new InputStreamReader(inFile));
+                        while(reader.ready()){
+                            String linea = reader.readLine();
+                            numJugadores = Character.getNumericValue(linea.charAt(0));
+                            int ini = 4, fin = 9;
+                            for(int i =0; i< numJugadores;i++){
+                                manJug = "";//4 11 18
+                                manJug = linea.substring(ini +(i * 7), fin + (i * 7) -1);
+                                cartasJugador.add(manJug);
+                                System.out.println(manJug);
+                            }
+                            
+                            mesa = linea.substring(2+(numJugadores * 7), 12 + (numJugadores * 7));
+                            
+                            System.out.println(mesa);
+                            for(int i = 0; i< numJugadores; i++){
+                                
+                                Mano mano = new Mano(cartasJugador.get(i), mesa, num, false);
+                                Solucion aux = mano.getSolucion();
+                                Integer numJ = i;
+                                soluciones.put(aux, numJ + 1);
+                            }      
+                            //comparar y ordenar a los jugadores para escribirlos despues
+                            soluciones.entrySet().forEach(r -> {
+                                Solucion aux = r.getKey();
+                                Integer numJ = r.getValue();
+                                System.out.println(" J" + numJ + " "+ aux.toString());
+                                p.println( " J" + numJ + " "+ aux.toString());
+                            });
+                            
+        */
+        String manJug = "", mesa = "";int numJugadores = 0; ArrayList<String> cartasJugador = new ArrayList<>();
+        BufferedReader reader = null;TreeMap<Solucion, Integer> soluciones = new TreeMap<>();
+        ComparadorSoluciones comp = new ComparadorSoluciones();
+        try {
+            reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(fichero))));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(pantalla2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            while(reader.ready()){
+                String linea = reader.readLine();
+                numJugadores = Character.getNumericValue(linea.charAt(0));
+                            int ini = 4, fin = 9;
+                            for(int i =0; i< numJugadores;i++){
+                                manJug = "";//4 11 18
+                                manJug = linea.substring(ini +(i * 7), fin + (i * 7) -1);
+                                cartasJugador.add(manJug);
+                                System.out.println(manJug);
+                            }
+                            
+                            mesa = linea.substring(2+(numJugadores * 7), 12 + (numJugadores * 7));
+                            
+                            System.out.println(mesa);
+                            for(int i = 0; i< numJugadores; i++){
+                                
+                                Mano mano = new Mano(cartasJugador.get(i), mesa, 5, false);
+                                Solucion aux = mano.getSolucion();
+                                Integer numJ = i;
+                                soluciones.put(aux, numJ + 1);
+                            }      
+                            //comparar y ordenar a los jugadores para escribirlos despues
+                            /*
+                            soluciones.entrySet().forEach(r -> {
+                                Solucion aux = r.getKey();
+                                Integer numJ = r.getValue();
+                                
+                            });*/
+                opcion3 a = new opcion3(cartasJugador, mesa, soluciones);
+                a.setVisible(true);
+                this.setVisible(false);
+                
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(pantalla2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_botonop3ActionPerformed
 
     private void botonop4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonop4ActionPerformed
