@@ -1,3 +1,5 @@
+package com.mycompany.poker.view;
+
 
 import com.mycompany.poker.model.ComparadorSoluciones;
 import com.mycompany.poker.model.Mano;
