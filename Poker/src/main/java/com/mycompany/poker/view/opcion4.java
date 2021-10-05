@@ -6,7 +6,6 @@ package com.mycompany.poker.view;
 
 import com.mycompany.poker.model.Solucion;
 import static com.mycompany.poker.view.opcion1.mostrarImagen;
-import java.io.InputStream;
 
 public class opcion4 extends javax.swing.JFrame {
     public opcion4(String jugador, String mesa, Solucion sol) {

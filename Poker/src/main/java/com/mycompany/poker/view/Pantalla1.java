@@ -77,7 +77,7 @@ public class Pantalla1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(fichero.getText().isEmpty() == false){
             setVisible(false);
-            pantalla2 a = new pantalla2(fichero.getText());
+            Pan2 a = new Pan2(fichero.getText());
             a.setVisible(true);
         }
         else{
