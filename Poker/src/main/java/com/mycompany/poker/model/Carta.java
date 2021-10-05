@@ -106,8 +106,8 @@ public class Carta {
                 }
             Character aaa = palo;
             if(jugador)
-                return "\033[0;1m" + aux1 + aaa.toString();
+                return aux1 + aaa.toString();
             else
-                return aux1.toString() + aaa.toString();
+                return aux1 + aaa.toString();
         }
 }
