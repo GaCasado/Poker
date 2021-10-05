@@ -15,7 +15,7 @@ public class opcion4 extends javax.swing.JFrame {
     /**
      * Creates new form opcion4
      */
-    public opcion4(InputStream inFile) {
+    public opcion4(String inFile) {
         initComponents();
     }
 

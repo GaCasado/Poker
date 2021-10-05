@@ -4,18 +4,29 @@
  */
 package com.mycompany.poker.view;
 
+import com.mycompany.poker.model.Mano;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author alberto
  */
 public class pantalla2 extends javax.swing.JPanel {
-
+    String fichero;
     /**
      * Creates new form pantalla2
      */
-    public pantalla2() {
+    public pantalla2(String fichero) {
         initComponents();
-        
+        this.fichero = fichero;
     }
 
     /**
@@ -95,29 +106,70 @@ public class pantalla2 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonop1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonop1ActionPerformed
-            opcion1 a = new opcion1();
-            a.setVisible(true);
-            this.setVisible(false);
+
+            String jugador = "", mesa = "";int num = 0;
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(fichero))));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(pantalla2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            while(reader.ready()){
+                String linea = reader.readLine();
+                jugador = linea.substring(0, 4);
+                mesa = linea.substring(4, 10);
+                Mano mano = new Mano(jugador, mesa,3, false);
+                opcion1 a = new opcion1(jugador, mesa, mano.getSolucion());
+                a.setVisible(true);
+                this.setVisible(false);
+                jugador = "";mesa = "";
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(pantalla2.class.getName()).log(Level.SEVERE, null, ex);
+        }
              // TODO add your handling code here:
     }//GEN-LAST:event_botonop1ActionPerformed
 
     private void botonop2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonop2ActionPerformed
         // TODO add your handling code here:
-        opcion2 a = new opcion2();
-            a.setVisible(true);
-            this.setVisible(false);
+        String jugador = "", mesa = "";int num = 0;
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(fichero))));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(pantalla2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            while(reader.ready()){
+                String linea = reader.readLine();
+                jugador = linea.substring(0, 4);
+                char ch = linea.charAt(5);
+                num = Character.getNumericValue(ch); // Lee el numero de cartas del river
+                mesa = linea.substring(7, ((num*2) + 7));
+                Mano mano = new Mano(jugador, mesa,num, false);
+                opcion2 a = new opcion2(jugador, mesa, mano.getSolucion());
+                a.setVisible(true);
+                this.setVisible(false);
+                jugador = "";mesa = "";
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(pantalla2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_botonop2ActionPerformed
 
     private void botonop3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonop3ActionPerformed
         // TODO add your handling code here:
-        opcion3 a = new opcion3();
+        opcion3 a = new opcion3(fichero);
             a.setVisible(true);
             this.setVisible(false);
     }//GEN-LAST:event_botonop3ActionPerformed
 
     private void botonop4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonop4ActionPerformed
         // TODO add your handling code here:
-        opcion4 a = new opcion4();
+        
+        opcion4 a = new opcion4(fichero);
             a.setVisible(true);
             this.setVisible(false);
     }//GEN-LAST:event_botonop4ActionPerformed

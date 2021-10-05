@@ -47,21 +47,17 @@ public class Main {
                 int num, numJugadores;
 		switch (ej) {
 		case 1:
-                        while(inFile.available() > 0){
-                            for(int i = 0; i < 10; i++){
-                                if(i < 4)
-                                    jugador += (char) inFile.read();
-                                else
-                                    mesa += (char) inFile.read();
-                            }
+                        reader = new BufferedReader(new InputStreamReader(inFile));
+                        while(reader.ready()){
+                            String linea = reader.readLine();
+                            jugador = linea.substring(0, 4);
+                            mesa = linea.substring(4, 10);
                             Mano mano = new Mano(jugador, mesa,3, false);
-                            
                             System.out.println( "Best Hand: " + mano.getSolucion().toString());
                             System.out.println( mano.getSolucion().getDraws());
                             p.println( "Best Hand: " + mano.getSolucion().toString());
                             p.println( mano.getSolucion().getDraws());
-                        }
-                        
+                        }    
                         jugador = "";mesa = "";
 			break;
 		case 2:

@@ -1,4 +1,4 @@
- J3 Straigth (Straight 6c7c8c9hTh)
- J1 Pair of A (9hThKsAhAc )
- J4 Pair of K (6c9hThKcKs )
- J2 Pair of J (9hThJsJhKs )
+Best Hand: Pair of A (ThJhQhAhAc )
+Draw: Straight Open Ended
+Draw: Flush
+
