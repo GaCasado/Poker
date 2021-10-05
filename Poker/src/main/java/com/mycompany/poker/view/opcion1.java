@@ -27,14 +27,11 @@ public class opcion1 extends javax.swing.JFrame {
      */
     public opcion1(String jugador, String mesa, Solucion sol) {
         initComponents();
-        for(int i = 0;i<10;i++){
-            //mostrarImagen()
-        }
-        mostrarImagen(this.carta1,"src/PNG-cards.1.3"+jugador.charAt(0)+"of"+jugador.charAt(1));
-        mostrarImagen(this.carta2,"src/PNG-cards.1.3"+jugador.charAt(2)+"of"+jugador.charAt(3));
-        mostrarImagen(this.carta3,"src/PNG-cards.1.3"+mesa.charAt(0)+"of"+mesa.charAt(1));
-        mostrarImagen(this.carta4,"src/PNG-cards.1.3"+mesa.charAt(2)+"of"+mesa.charAt(3));
-        mostrarImagen(this.carta5,"src/PNG-cards.1.3"+mesa.charAt(4)+"of"+mesa.charAt(5));
+        mostrarImagen(this.carta1,"images/"+jugador.charAt(0)+jugador.charAt(1) +".png");
+        mostrarImagen(this.carta2,"images/"+jugador.charAt(2)+jugador.charAt(3) +".png");
+        mostrarImagen(this.carta3,"images/"+mesa.charAt(0)+mesa.charAt(1) +".png");
+        mostrarImagen(this.carta4,"images/"+mesa.charAt(2)+mesa.charAt(3) +".png");
+        mostrarImagen(this.carta5,"images/"+mesa.charAt(4)+mesa.charAt(5) +".png");
         
         jugadas.setText(sol.toString());
         jugadas.setText(sol.getDraws());

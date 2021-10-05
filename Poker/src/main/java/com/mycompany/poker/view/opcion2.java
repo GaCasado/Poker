@@ -27,7 +27,7 @@ public class opcion2 extends javax.swing.JFrame {
             mostrarImagen(this.carta2j,"src/PNG-cards.1.3"+jugador.charAt(2)+"of"+jugador.charAt(3));
             for(int i = 0; i < mesa.length()/2;i++){
                 
-                muestra(i,"src/PNG-cards.1.3"+mesa.charAt(i*2)+"of"+mesa.charAt(i*2+1));
+                muestra(i,"images/"+mesa.charAt(i*2)+mesa.charAt(i*2+1) +".png");
             }
             jugadas.setText(sol.toString());
             jugadas.setText(sol.getDraws());

@@ -28,7 +28,7 @@ public class opcion3 extends javax.swing.JFrame {
         cartasj.setText(auxiliar);
             for(int i = 0; i < mesa.length()/2;i++){
                 
-                muestra(i,"images/"+mesa.charAt(i*2)+mesa.charAt(i*2+1));
+                muestra(i,"images/"+mesa.charAt(i*2)+mesa.charAt(i*2+1) +".png");
             }
             jugadas.setText(soluciones);
         
