@@ -4,11 +4,10 @@ package com.mycompany.poker.view;
 import com.mycompany.poker.model.ComparadorSoluciones;
 import com.mycompany.poker.model.Mano;
 import com.mycompany.poker.model.Solucion;
-import com.mycompany.poker.view.opcion1;
-import com.mycompany.poker.view.opcion2;
-import com.mycompany.poker.view.opcion3;
-import com.mycompany.poker.view.opcion4;
-import com.mycompany.poker.view.pantalla2;
+import com.mycompany.poker.view.Opcion1;
+import com.mycompany.poker.view.Opcion2;
+import com.mycompany.poker.view.Opcion3;
+import com.mycompany.poker.view.Opcion4;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -128,7 +127,7 @@ public class Pan2 extends javax.swing.JFrame {
         try {
             reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(fichero))));
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(pantalla2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pan2.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             while(reader.ready()){
@@ -136,13 +135,13 @@ public class Pan2 extends javax.swing.JFrame {
                 jugador = linea.substring(0, 4);
                 mesa = linea.substring(4, 10);
                 Mano mano = new Mano(jugador, mesa,3, false);
-                opcion1 a = new opcion1(jugador, mesa, mano.getSolucion());
+                Opcion1 a = new Opcion1(jugador, mesa, mano.getSolucion());
                 a.setVisible(true);
                 this.setVisible(false);
                 jugador = "";mesa = "";
             }
         } catch (IOException ex) {
-            Logger.getLogger(pantalla2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pan2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -152,7 +151,7 @@ public class Pan2 extends javax.swing.JFrame {
         try {
             reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(fichero))));
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(pantalla2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pan2.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             while(reader.ready()){
@@ -162,13 +161,13 @@ public class Pan2 extends javax.swing.JFrame {
                 num = Character.getNumericValue(ch); // Lee el numero de cartas del river
                 mesa = linea.substring(7, ((num*2) + 7));
                 Mano mano = new Mano(jugador, mesa,num, false);
-                opcion2 a = new opcion2(jugador, mesa, mano.getSolucion());
+                Opcion2 a = new Opcion2(jugador, mesa, mano.getSolucion());
                 a.setVisible(true);
                 this.setVisible(false);
                 jugador = "";mesa = "";
             }
         } catch (IOException ex) {
-            Logger.getLogger(pantalla2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pan2.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -181,7 +180,7 @@ public class Pan2 extends javax.swing.JFrame {
         try {
             reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(fichero))));
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(pantalla2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pan2.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             while(reader.ready()){
@@ -213,13 +212,13 @@ public class Pan2 extends javax.swing.JFrame {
                                 solu += " J" + numJ + " "+ aux.toString() + "\n";
                             }
                             
-                opcion3 a = new opcion3(cartasJugador, mesa, solu);
+                Opcion3 a = new Opcion3(cartasJugador, mesa, solu);
                 a.setVisible(true);
                 this.setVisible(false);
                 
             }
         } catch (IOException ex) {
-            Logger.getLogger(pantalla2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pan2.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -232,7 +231,7 @@ public class Pan2 extends javax.swing.JFrame {
         try {
             reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(fichero))));
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(pantalla2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pan2.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             while(reader.ready()){
@@ -279,12 +278,12 @@ public class Pan2 extends javax.swing.JFrame {
                             aux = cmp.compara(mano.getSolucion(),aux);                       
                             cJ = "";
                                                                                  
-                        opcion4 a = new opcion4(jugador, mesa, aux);
+                        Opcion4 a = new Opcion4(jugador, mesa, aux);
                     a.setVisible(true);
                 this.setVisible(false);
             }
         } catch (IOException ex) {
-            Logger.getLogger(pantalla2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pan2.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_jButton4ActionPerformed

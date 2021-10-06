@@ -5,7 +5,7 @@
 package com.mycompany.poker.view;
 
 import com.mycompany.poker.model.Solucion;
-import static com.mycompany.poker.view.opcion1.mostrarImagen;
+import static com.mycompany.poker.view.Opcion1.mostrarImagen;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.TreeMap;
@@ -14,12 +14,12 @@ import java.util.TreeMap;
  *
  * @author alberto
  */
-public class opcion3 extends javax.swing.JFrame {
+public class Opcion3 extends javax.swing.JFrame {
 
     /**
      * Creates new form opcion3
      */
-    public opcion3(ArrayList<String> cartasJugadores,String mesa, String soluciones) {
+    public Opcion3(ArrayList<String> cartasJugadores,String mesa, String soluciones) {
         initComponents();
         String auxiliar = "";Character uno = null, dos = null;
         for(int i = 0;i< cartasJugadores.size();i++){

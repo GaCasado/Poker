@@ -5,10 +5,10 @@
 package com.mycompany.poker.view;
 
 import com.mycompany.poker.model.Solucion;
-import static com.mycompany.poker.view.opcion1.mostrarImagen;
+import static com.mycompany.poker.view.Opcion1.mostrarImagen;
 
-public class opcion4 extends javax.swing.JFrame {
-    public opcion4(String jugador, String mesa, Solucion sol) {
+public class Opcion4 extends javax.swing.JFrame {
+    public Opcion4(String jugador, String mesa, Solucion sol) {
         initComponents();
         Character uno = null, dos = null;
         uno = jugador.charAt(0);dos =jugador.charAt(1);

@@ -16,14 +16,14 @@ import javax.swing.JLabel;
  *
  * @author alberto
  */
-public class opcion1 extends javax.swing.JFrame {
+public class Opcion1 extends javax.swing.JFrame {
     
     public static void mostrarImagen(JLabel lbl, String ruta){
         ImageIcon ico = new ImageIcon(ruta);
         lbl.setIcon(ico);
     }
     
-    public opcion1(String jugador, String mesa, Solucion sol) {
+    public Opcion1(String jugador, String mesa, Solucion sol) {
         initComponents();
         String aux = "";
         Character uno = null, dos = null;

@@ -5,13 +5,13 @@
 package com.mycompany.poker.view;
 
 import com.mycompany.poker.model.Solucion;
-import static com.mycompany.poker.view.opcion1.mostrarImagen;
+import static com.mycompany.poker.view.Opcion1.mostrarImagen;
 
 /**
  *
  * @author alberto
  */
-public class opcion2 extends javax.swing.JFrame {
+public class Opcion2 extends javax.swing.JFrame {
 
     //  if(mano.getSolucion().nC == 3){
           
@@ -19,7 +19,7 @@ public class opcion2 extends javax.swing.JFrame {
     /**
      * Creates new form opcion2
      */
-    public opcion2(String jugador, String mesa, Solucion sol) {
+    public Opcion2(String jugador, String mesa, Solucion sol) {
        
         initComponents();
         Character uno = null, dos = null;
