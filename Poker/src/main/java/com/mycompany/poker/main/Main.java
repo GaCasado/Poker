@@ -38,6 +38,7 @@ public class Main {
             }
             catch(Exception e){
                 System.out.println("Algo ha salido mal con los argumentos del programa");
+                System.exit(0);
             }
 
                 try{
