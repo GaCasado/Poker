@@ -4,10 +4,7 @@
  */
 package com.mycompany.poker.model;
 import java.lang.String;
-/**
- *
- * @author seiya
- */
+
 public class Carta {
 	private char palo;
 	private int num;
