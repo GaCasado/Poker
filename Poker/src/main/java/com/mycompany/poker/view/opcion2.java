@@ -7,18 +7,9 @@ package com.mycompany.poker.view;
 import com.mycompany.poker.model.Solucion;
 import static com.mycompany.poker.view.Opcion1.mostrarImagen;
 
-/**
- *
- * @author alberto
- */
+
 public class Opcion2 extends javax.swing.JFrame {
 
-    //  if(mano.getSolucion().nC == 3){
-          
-   // };
-    /**
-     * Creates new form opcion2
-     */
     public Opcion2(String jugador, String mesa, Solucion sol) {
        
         initComponents();

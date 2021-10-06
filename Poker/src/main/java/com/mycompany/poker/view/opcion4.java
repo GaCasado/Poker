@@ -46,8 +46,7 @@ public class Opcion4 extends javax.swing.JFrame {
                 break;
             case 5:
                 mostrarImagen(carta5m,ruta);
-                break;    
-            
+                break;            
         }
     }
     

@@ -10,15 +10,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-/**
- *
- * @author alberto
- */
 public class Opcion3 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form opcion3
-     */
+ 
     public Opcion3(ArrayList<String> cartasJugadores,String mesa, String soluciones) {
         initComponents();
         String auxiliar = "";Character uno = null, dos = null;

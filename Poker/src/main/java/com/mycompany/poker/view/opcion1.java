@@ -12,10 +12,6 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-/**
- *
- * @author alberto
- */
 public class Opcion1 extends javax.swing.JFrame {
     
     public static void mostrarImagen(JLabel lbl, String ruta){
