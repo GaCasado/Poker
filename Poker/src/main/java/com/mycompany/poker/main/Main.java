@@ -18,14 +18,12 @@ import com.mycompany.poker.view.Pantalla1;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
-//import java.util.Map;
 import java.util.TreeMap;
 
 
 public class Main {
 
 	private static int ej;
-	//private int numCartas;
         private static String _outFile = null;
         private static String _inFile = null;
 	private static OutputStream outFile = null;
@@ -33,9 +31,15 @@ public class Main {
         private static boolean gui;
 	
         private static void parseArgs(String[] args) throws FileNotFoundException {
-		ej = Integer.parseInt(args[0]);
+            try{
+                ej = Integer.parseInt(args[0]);
                 _inFile = args[1];
                 _outFile = args[2];
+            }
+            catch(Exception e){
+                System.out.println("Algo ha salido mal con los argumentos del programa");
+            }
+
                 try{
                     if(args[3] != null)
                         gui = true;
@@ -43,7 +47,7 @@ public class Main {
                         gui = false;
                 }
                 catch(Exception e){
-                    System.out.println(e.getMessage());
+                    System.out.println("Se ha seleccionado el modo consola");
                 }
 	}
         
@@ -67,7 +71,7 @@ public class Main {
                             System.out.println( mano.getSolucion().getDraws());
                             p.println( "Best Hand: " + mano.getSolucion().toString());
                             p.println( mano.getSolucion().getDraws());
-                        }    
+                        }
                         jugador = "";mesa = "";
 			break;
 		case 2:
@@ -76,14 +80,15 @@ public class Main {
                             String linea = reader.readLine();
                             jugador = linea.substring(0, 4);
                             char ch = linea.charAt(5);
-                            num = Character.getNumericValue(ch); // Lee el numero de cartas del river                           
+                            num = Character.getNumericValue(ch);                           
                             mesa = linea.substring(7, ((num*2) + 7));
                             Mano mano = new Mano(jugador, mesa,num, false);                                                      
                         System.out.println(linea);
                         System.out.println( " - Best Hand: " + mano.getSolucion().toString());
                         System.out.println( mano.getSolucion().getDraws());
                         p.println( "Best Hand: " + mano.getSolucion().toString());
-                        p.println( mano.getSolucion().getDraws());
+                        if(num != 5)//Si ya han salido todas no interesan los proyectos
+                            p.println( mano.getSolucion().getDraws());
                         jugador = "";mesa = "";
                         }
                        
@@ -99,7 +104,7 @@ public class Main {
                             numJugadores = Character.getNumericValue(linea.charAt(0));
                             int ini = 4, fin = 9;
                             for(int i =0; i< numJugadores;i++){
-                                manJug = "";//4 11 18
+                                manJug = "";
                                 manJug = linea.substring(ini +(i * 7), fin + (i * 7) -1);
                                 cartasJugador.add(manJug);
                                 System.out.println(manJug);
@@ -179,7 +184,8 @@ public class Main {
                         System.out.println( " - Best Hand: " + aux.toString());
                         System.out.println( aux.getDraws());
                         p.println( "Best Hand: " + aux.toString());
-                        p.println( aux.getDraws());
+                        if(num!= 5)
+                            p.println( aux.getDraws());
                         jugador = "";mesa = "";
                         }
 			break;

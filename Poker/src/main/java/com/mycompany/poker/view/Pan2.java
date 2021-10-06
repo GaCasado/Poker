@@ -170,6 +170,7 @@ public class Pan2 extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(pantalla2.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

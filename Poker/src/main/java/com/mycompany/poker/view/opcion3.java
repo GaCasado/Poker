@@ -30,7 +30,7 @@ public class opcion3 extends javax.swing.JFrame {
             for(int i = 0; i < mesa.length()/2;i++){
                 uno = mesa.charAt(i*2);dos =mesa.charAt(i*2+1);
                 //System.out.println(uno.toString()+dos.toString()+".png");
-                muestra(i+1,uno.toString()+dos.toString()+".png");
+                muestra(i+1,"Images/" + uno.toString()+dos.toString()+".png");
             }
             jugadas.setText(soluciones);
         

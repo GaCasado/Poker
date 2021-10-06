@@ -12,17 +12,17 @@ public class opcion4 extends javax.swing.JFrame {
         initComponents();
         Character uno = null, dos = null;
         uno = jugador.charAt(0);dos =jugador.charAt(1);
-         mostrarImagen(this.carta1j,uno.toString()+dos.toString()+".png");
+         mostrarImagen(this.carta1j,"Images/" + uno.toString()+dos.toString()+".png");
          uno = jugador.charAt(2);dos =jugador.charAt(3);
-         mostrarImagen(this.carta2j,uno.toString()+dos.toString()+".png");
+         mostrarImagen(this.carta2j,"Images/" + uno.toString()+dos.toString()+".png");
          uno = jugador.charAt(4);dos =jugador.charAt(5);
-         mostrarImagen(this.carta3j,uno.toString()+dos.toString()+".png");
+         mostrarImagen(this.carta3j,"Images/" + uno.toString()+dos.toString()+".png");
          uno = jugador.charAt(6);dos =jugador.charAt(7);
-         mostrarImagen(this.carta4j,uno.toString()+dos.toString()+".png");
+         mostrarImagen(this.carta4j,"Images/" + uno.toString()+dos.toString()+".png");
          
          for(int i = 0; i < mesa.length()/2;i++){
                 uno = mesa.charAt(i*2);dos =mesa.charAt(i*2+1);
-                muestra(i+1,uno.toString()+dos.toString()+".png");
+                muestra(i+1,"Images/" + uno.toString()+dos.toString()+".png");
             }
          String aux = "";
          aux = sol.toString() + " " + sol.getDraws();

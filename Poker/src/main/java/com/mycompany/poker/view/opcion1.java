@@ -28,15 +28,15 @@ public class opcion1 extends javax.swing.JFrame {
         String aux = "";
         Character uno = null, dos = null;
         uno = jugador.charAt(0);dos =jugador.charAt(1);
-        mostrarImagen(this.carta1,uno.toString()+dos.toString() +".png");
+        mostrarImagen(this.carta1,"Images/" + uno.toString()+dos.toString() +".png");
         uno = jugador.charAt(2);dos =jugador.charAt(3);
-        mostrarImagen(this.carta2,uno.toString()+dos.toString() +".png");
+        mostrarImagen(this.carta2,"Images/" + uno.toString()+dos.toString() +".png");
         uno = mesa.charAt(0);dos =mesa.charAt(1);
-        mostrarImagen(this.carta3,uno.toString()+dos.toString() +".png");
+        mostrarImagen(this.carta3,"Images/" + uno.toString()+dos.toString() +".png");
         uno = mesa.charAt(2);dos =mesa.charAt(3);
-        mostrarImagen(this.carta4,uno.toString()+dos.toString() +".png");
+        mostrarImagen(this.carta4,"Images/" + uno.toString()+dos.toString() +".png");
         uno = mesa.charAt(4);dos =mesa.charAt(5);
-        mostrarImagen(this.carta5,uno.toString()+dos.toString() +".png");
+        mostrarImagen(this.carta5,"Images/" + uno.toString()+dos.toString() +".png");
         aux = sol.toString() + " " + sol.getDraws();
         jugadas.setText(aux);
         

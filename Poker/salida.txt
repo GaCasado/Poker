@@ -1,4 +1,3 @@
-Best Hand: Pair of A (ThJhQhAhAc )
-Draw: Straight Gutshot
-Draw: Flush
+Best Hand: Flush (5hJhQhKhAh )
+Draw: Straight Open Ended
 
